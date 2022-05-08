@@ -18,7 +18,6 @@ diagramas de casos de uso, bem como as descrições dos casos de uso de cada uma
 """
 
 
-from re import S
 
 
 class Bibliotecario:
