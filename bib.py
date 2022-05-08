@@ -16,36 +16,39 @@ No contexto do presente projeto, foram identificados dois subsistemas: Controle 
 Acervo e Atendimento a Usuário, figuras 1 e 2. Assim, a seguir, são apresentados dois
 diagramas de casos de uso, bem como as descrições dos casos de uso de cada uma delas.
 """
-class cadastrarLivro:
+class Livro:
     def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano):
-        self.titulo = titulo
-        self.autor = autor
-        self.assunto = assunto
-        self.editora = editora
-        self.edicao = edicao
-        self.isbn = isbn
-        self.ano = ano
+        self.__titulo = titulo
+        self.__autor = autor
+        self.__assunto = assunto
+        self.__editora = editora
+        self.__edicao = edicao
+        self.__isbn = isbn
+        self.__ano = ano
         
     def get_titulo(self):
-        return self.titulo
+        return self.__titulo
     
     def get_autor(self):
-        return self.autor
+        return self.__autor
 
     def get_assunto(self):
-        return self.assunto
+        return self.__assunto
     
     def get_editora(self):
-        return self.editora
+        return self.__editora
     
     def get_edicao(self):
-        return self.edicao
+        return self.__edicao
     
     def get_isbn(self):
-        return self.isbn
+        return self.__isbn
     
     def get_ano(self):
-        return self.ano
+        return self.__ano
+    
+    def __str__(self) -> str:
+        return f"O livro foi cadastrado com os seguintes dados:\n Titulo: {self.__titulo}\n Autor: {self.__autor}\n Assunto: {self.__assunto}\n Editora: {self.__editora}\n Edição: {self.__edicao}\n ISBN: {self.__isbn}\n Ano de publicação:{self.__ano}\n O livro foi criado com sucesso!"
     
     def AlterarLivro(self, titulo, autor, assunto, editora, edicao, isbn, ano):
         alterar = cadastrarLivro(titulo, autor, assunto, editora, edicao, isbn, ano)
@@ -66,7 +69,7 @@ class cadastrarLivro:
         else:
             print("Nenhuma informação pode ser alterada!")
         
-class cadastrarExemplar:
+class Exemplar:
     def __init__(self,novoexemplar, alteracao, consulta):
         self.novoexemplar = novoexemplar
         self.alteracao = alteracao
@@ -81,7 +84,7 @@ class cadastrarExemplar:
     def get_consulta(self):
         return self.consulta
     
-class cadastrarCategoria:
+class Categoria:
     def __init__(self, categoria, alteracao, consulta, excluir):
         self.categoria = categoria
         self.alteracao = alteracao
