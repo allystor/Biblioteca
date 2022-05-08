@@ -16,42 +16,6 @@ No contexto do presente projeto, foram identificados dois subsistemas: Controle 
 Acervo e Atendimento a Usuário, figuras 1 e 2. Assim, a seguir, são apresentados dois
 diagramas de casos de uso, bem como as descrições dos casos de uso de cada uma delas.
 """
-
-
-from re import S
-
-
-class Bibliotecario:
-    def __init__(self, nome, idade, telefone, email):
-        self.nome = nome
-        self.idade = idade
-        self.telefone = telefone
-        self.email = email
-        
-    def get_nome(self):
-        return self.nome
-
-    def set_nome(self, nome):
-        self.nome = nome
-        
-    def get_idade(self):
-        return self.idade
-    
-    def set_idade(self, idade):
-        self.idade = idade
-        
-    def get_telefone(self):
-        return self.telefone
-    
-    def set_telefone(self, telefone):
-        self.telefone = telefone
-    
-    def get_email(self):
-        return self.email
-    
-    def set_email(self, email):
-        self.email = email
-
 class cadastrarLivro:
     def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano):
         self.titulo = titulo
@@ -83,9 +47,24 @@ class cadastrarLivro:
     def get_ano(self):
         return self.ano
     
-    def alterarLivro(self, alterar):
-        self.titulo = alterar.get_titulo()
-        
+    def AlterarLivro(self, titulo, autor, assunto, editora, edicao, isbn, ano):
+        alterar = cadastrarLivro(titulo, autor, assunto, editora, edicao, isbn, ano)
+        if alterar.get_titulo() != self.get_titulo():
+            print("Título alterado com sucesso!")
+        elif alterar.get_autor() != self.get_autor():
+            print("Autor alterado com sucesso!")
+        elif alterar.get_assunto() != self.get_assunto():
+            print("Assunto alterado com sucesso!")
+        elif alterar.get_editora() != self.get_editora():
+            print("Editora alterada com sucesso!")
+        elif alterar.get_edicao() != self.get_edicao():
+            print("Edição alterada com sucesso!")
+        elif alterar.get_isbn() != self.get_isbn():
+            print("ISBN alterado com sucesso!")
+        elif alterar.get_ano() != self.get_ano():
+            print("Ano alterado com sucesso!")
+        else:
+            print("Nenhuma informação pode ser alterada!")
         
 class cadastrarExemplar:
     def __init__(self,novoexemplar, alteracao, consulta):
