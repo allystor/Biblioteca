@@ -13,12 +13,12 @@ def main():
                 print(f'{contador + 1}-{item}')
             opcao = int(input("Digite a opção desejada: "))
             print("----------------------------------------------------")
-            while opcao == 0:
+            while opcao == 1:
                 print("----------------Opções dos livros--------------")
-                livro = ["Criar livro","Alterar livro","Remover livro", "Sair"]
+                menulivro = ["Criar livro","Alterar livro","Remover livro", "Sair"]
                 print("Escolha uma das seguintes opções:")
                 print("----------------------------------------------------")
-                for contador, item in enumerate(livro):
+                for contador, item in enumerate(menulivro):
                     print(f'{contador + 1}-{item}')
                 opcao = int(input("Digite a opção desejada: "))
                 while opcao == 1:
@@ -31,15 +31,14 @@ def main():
                     isbn = int(input("Digite o ISBN do livro: "))
                     ano = int(input("Digite o ano do livro: "))
                     livro = Livro(titulo, autor, assunto, editora, edicao, isbn, ano)
-                    livro.__str__()
-                    prosseguir = int(input("Para criar um novo outro livro, digite 1. Para voltar ao menu anterior, digite 2: "))
-                    if prosseguir == 1:
-                        pass
-                    elif prosseguir == 2:
-                        opcao = 1
+                    print(livro.__str__())
                     cadastroLivro.append(livro)
-                    break
-            break
+                    prosseguir = int(input("Para criar um novo outro livro, digite 1. Para voltar ao menu anterior, digite 2: "))
+                    if prosseguir == 2:
+                        break
+                while opcao == 2:
+                    print("Para alterar um livro, digite os seguintes dados:")
+                                  
     except:
         print("Ops, algo deu errado!")        
 if __name__ == "__main__":

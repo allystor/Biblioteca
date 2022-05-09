@@ -47,11 +47,11 @@ class Livro:
     def get_ano(self):
         return self.__ano
     
-    def __str__(self) -> str:
-        return f"O livro foi cadastrado com os seguintes dados:\n Titulo: {self.__titulo}\n Autor: {self.__autor}\n Assunto: {self.__assunto}\n Editora: {self.__editora}\n Edição: {self.__edicao}\n ISBN: {self.__isbn}\n Ano de publicação:{self.__ano}\n O livro foi criado com sucesso!"
+    def __str__(self):
+        return f"O livro foi cadastrado com os seguintes dados:\n Titulo: {self.__titulo}\n Autor: {self.__autor}\n Assunto: {self.__assunto}\n Editora: {self.__editora}\n Edição: {self.__edicao}\n ISBN: {self.__isbn}\n Ano de publicação:{self.__ano}\nO livro foi criado com sucesso!"
     
     def AlterarLivro(self, titulo, autor, assunto, editora, edicao, isbn, ano):
-        alterar = cadastrarLivro(titulo, autor, assunto, editora, edicao, isbn, ano)
+        alterar = Livro(titulo, autor, assunto, editora, edicao, isbn, ano)
         if alterar.get_titulo() != self.get_titulo():
             print("Título alterado com sucesso!")
         elif alterar.get_autor() != self.get_autor():
