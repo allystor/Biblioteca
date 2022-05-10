@@ -1,47 +1,43 @@
-from array import array
-from bib import *
+from livro import Livro, listaLivros
 
-def main():
-    cadastroLivro = []
-    try:
-        while True:
-            print("------------Menu do bibliotecário----------------")
-            menuBibliotecario = ["Opções do livros","Para cadastrar um exemplar","Para consultar o acervo","Para cadastrar categoria","Para sair"]
-            print("bem vindo ao menu do bibliotecário!")
-            print("Escolha uma das seguintes opções:")
-            for contador, item in enumerate(menuBibliotecario):
-                print(f'{contador + 1}-{item}')
-            opcao = int(input("Digite a opção desejada: "))
-            print("----------------------------------------------------")
-            while opcao == 1:
-                print("----------------Opções dos livros--------------")
-                menulivro = ["Criar livro","Alterar livro","Remover livro", "Sair"]
-                print("Escolha uma das seguintes opções:")
-                print("----------------------------------------------------")
-                for contador, item in enumerate(menulivro):
-                    print(f'{contador + 1}-{item}')
-                opcao = int(input("Digite a opção desejada: "))
-                while opcao == 1:
-                    print("Para cadastrar um novo livro, digite os seguintes dados:")
-                    titulo = input("Digite o titulo do livro: ")
-                    autor = input("Digite o autor do livro: ")
-                    assunto =input("Digite o assunto do livro: ")
-                    editora = input("Digite a editora do livro: ")
-                    edicao = input("Digite a edição do livro: ")
-                    isbn = int(input("Digite o ISBN do livro: "))
-                    ano = int(input("Digite o ano do livro: "))
-                    livro = Livro(titulo, autor, assunto, editora, edicao, isbn, ano)
-                    print(livro.__str__())
-                    cadastroLivro.append(livro)
-                    prosseguir = int(input("Para criar um novo outro livro, digite 1. Para voltar ao menu anterior, digite 2: "))
-                    if prosseguir == 2:
-                        break
-                while opcao == 2:
-                    print("Para alterar um livro, digite os seguintes dados:")
-                                  
-    except:
-        print("Ops, algo deu errado!")        
-if __name__ == "__main__":
-    main()
-        
-        
+def menu():
+
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+    print("■              BIBLIOTECA                ■")
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+    print("■ 1 - Listar titulos                     ■")
+    print("■ 2 - Adicionar livro                    ■")
+    print("■ 3 - Excluir livro                      ■")
+    print("■ 4 - Alterar livro                      ■")
+    print("■ 5 - Listar todas informações           ■")
+    print("■ 0 - Sair                               ■")
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+
+menu()
+escolha = int(input("Escolha uma opção: "))
+
+while escolha != 0:
+    if escolha == 1:
+        print("batata")
+        for i in listaLivros:
+            print(i.get_titulo())
+
+    if escolha == 2:
+        Livro.incluirLivro(listaLivros)
+    
+    if escolha == 3:
+        Livro.excluirLivro(listaLivros)
+
+    if escolha == 4:
+        Livro.alterarLivro(listaLivros)
+    
+    if escolha == 5:
+        for i in listaLivros:
+                print("\n")
+                print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
+                print("\n")
+
+    menu()
+    escolha = int(input("Escolha uma opção: "))
+
+
