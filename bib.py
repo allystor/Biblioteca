@@ -84,6 +84,9 @@ class Exemplar:
     def get_consulta(self):
         return self.consulta
     
+    def __str__(self) -> str:
+        return f"O exemplar foi cadastrado com os seguintes dados:\n Número do exemplar: {self.novoexemplar}\n Alteração: {self.alteracao}\n Consulta: {self.consulta}\nO exemplar foi criado com sucesso!"
+    
 class Categoria:
     def __init__(self, categoria, alteracao, consulta, excluir):
         self.categoria = categoria
