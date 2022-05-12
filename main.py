@@ -1,4 +1,4 @@
-from livro import Livro, listaLivros
+from bib import Livro, listaLivros
 
 def menu():
     print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
