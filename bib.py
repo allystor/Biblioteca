@@ -1,22 +1,8 @@
-"""
-Projeto: Sistema de Biblioteca
-1. Introdução
-Este documento apresenta a especificação de requisitos para a construção de um sistema
-de bibliotecas. Essa atividade será conduzida usando a técnica de Modelagem de Casos
-de Uso e, portanto, este documento contém uma descrição do propósito do sistema,
-associados às descrições dos casos de uso.
-2. Descrição do Propósito do Sistema
-O sistema de biblioteca visa informatizar as atividades de gestão de um repositório de
-arquivos, a saber: gestão de livros a usuários e reserva de livros. Para que essas atividades
-sejam apoiadas, é necessário controlar as informações acerca de livros, exemplares e
-usuários. Além disso, devem ser fornecidas facilidades de consulta ao acervo, permitindo
-consultas por assunto, autor e título.
-3. Modelo de Casos de Uso
-No contexto do presente projeto, foram identificados dois subsistemas: Controle de
-Acervo e Atendimento a Usuário, figuras 1 e 2. Assim, a seguir, são apresentados dois
-diagramas de casos de uso, bem como as descrições dos casos de uso de cada uma delas.
-"""
+from tracemalloc import stop
+
+
 class Livro:
+
     def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano):
         self.__titulo = titulo
         self.__autor = autor
@@ -25,83 +11,152 @@ class Livro:
         self.__edicao = edicao
         self.__isbn = isbn
         self.__ano = ano
-        
+
+    # GET E SET ================================================================
+
     def get_titulo(self):
         return self.__titulo
     
+    def set_titulo(self, titulo):
+        self.__titulo = titulo
+    
     def get_autor(self):
         return self.__autor
+    
+    def set_autor(self, autor):
+        self.__autor = autor
 
     def get_assunto(self):
         return self.__assunto
+
+    def set_assunto(self, assunto):
+        self.__assunto = assunto
     
     def get_editora(self):
         return self.__editora
+
+    def set_editora(self, editora):
+        self.__editora = editora
     
     def get_edicao(self):
         return self.__edicao
     
+    def set_edicao(self, edicao):
+        self.__edicao = edicao
+    
     def get_isbn(self):
         return self.__isbn
+
+    def set_isbn(self, isbn):
+        self.__isbn = isbn
     
     def get_ano(self):
-        return self.__ano
-    
-    def __str__(self):
-        return f"O livro foi cadastrado com os seguintes dados:\n Titulo: {self.__titulo}\n Autor: {self.__autor}\n Assunto: {self.__assunto}\n Editora: {self.__editora}\n Edição: {self.__edicao}\n ISBN: {self.__isbn}\n Ano de publicação:{self.__ano}\nO livro foi criado com sucesso!"
-    
-    def AlterarLivro(self, titulo, autor, assunto, editora, edicao, isbn, ano):
-        alterar = Livro(titulo, autor, assunto, editora, edicao, isbn, ano)
-        if alterar.get_titulo() != self.get_titulo():
-            print("Título alterado com sucesso!")
-        elif alterar.get_autor() != self.get_autor():
-            print("Autor alterado com sucesso!")
-        elif alterar.get_assunto() != self.get_assunto():
-            print("Assunto alterado com sucesso!")
-        elif alterar.get_editora() != self.get_editora():
-            print("Editora alterada com sucesso!")
-        elif alterar.get_edicao() != self.get_edicao():
-            print("Edição alterada com sucesso!")
-        elif alterar.get_isbn() != self.get_isbn():
-            print("ISBN alterado com sucesso!")
-        elif alterar.get_ano() != self.get_ano():
-            print("Ano alterado com sucesso!")
-        else:
-            print("Nenhuma informação pode ser alterada!")
-        
-class Exemplar:
-    def __init__(self,novoexemplar, alteracao, consulta):
-        self.novoexemplar = novoexemplar
-        self.alteracao = alteracao
-        self.consulta = consulta
-        
-    def get_novoexemplar(self):
-        return self.novoexemplar
-    
-    def get_alteracao(self):
-        return self.alteracao
-    
-    def get_consulta(self):
-        return self.consulta
-    
-class Categoria:
-    def __init__(self, categoria, alteracao, consulta, excluir):
-        self.categoria = categoria
-        self.alteracao = alteracao
-        self.consulta = consulta
-        self.excluir = excluir
-        
-    def get_categoria(self):
-        return self.categoria
-    
-    def get_alteracao(self):
-        return self.alteracao
-    
-    def get_consulta(self):
-        return self.consulta
-    
-    def get_excluir(self):
-        return self.excluir
-    
+        return self.__ano 
 
+    def set_ano(self, ano):
+        self.__ano = ano
+
+    #================================================================
+
+    def incluirLivro(listaLivro):
+
+        print("Incluindo novo livro.....")
+
+        titulo = str(input("Digite o titulo do livro: "))
+        autor = str(input("Digite o autor do livro: "))
+        assunto = str(input("Digite o assunto do livro: "))
+        editora = str(input("Digite a editora do livro: "))
+        edicao = input("Digite a edição do livro: ")
+        isbn = int(int(input("Digite o ISBN do livro: ")))
+        ano = int(input("Digite o ano do livro: "))
+
+        listaLivro.append(Livro(titulo, autor, assunto, editora, edicao, isbn, ano))
+
+    #Isso aqui ta um lixo
+    def excluirLivro(listaLivro):
+
+        print("Excluindo livro...")
         
+        busca = str(input("Informe o titulo do livro que deseja excluir: "))
+        posicao = 0
+
+        for livro in listaLivro:
+            if busca.lower() == livro.get_titulo().lower():
+                listaLivro.pop(posicao)
+
+            posicao += 1
+                
+    def alterarLivro(listaLivro):
+
+        print("Alterando dados do livro...")
+        
+        busca = str(input("Informe o titulo do livro que deseja alterar: "))
+        contador = 0
+        listaAlterar = []
+
+        for livro in listaLivro:
+            if busca.lower() == livro.get_titulo().lower():
+                contador += 1
+                listaAlterar.append(livro)
+
+        if contador == 0:
+            print("Não foi encontrado nenhum livro com esse titulo")
+
+        elif contador == 1:
+            livro = listaAlterar[0]
+
+        elif contador > 1:
+            print("Mais de um livro encontrado com esse titulo, informe qual deseja alterar:")
+            contador = 1
+
+            for i in listaAlterar:
+                print("\n")
+                print(f"{contador})")
+                print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
+                print("\n")
+                contador += 1
+
+            escolha = int(input("Qual desses livros deseja alterar?: "))
+            livro = listaAlterar[escolha - 1]
+
+        while True:
+
+            print(f"Alterando livro '{livro.get_titulo()}'")
+            print("Digite 'sair' para sair")
+            print("Opções = titulo, autor, assunto, editora, edicao, isbn, ano")
+            escolha = input("Oque deseja alterar no livro?: ")
+
+            if escolha == "sair":
+                break
+
+            elif escolha == "titulo":
+                livro.set_titulo(input("Digite o novo titulo: "))
+            
+            elif escolha == "autor":
+                livro.set_autor(input("Digite o novo autor: "))
+
+            elif escolha == "assunto":
+                livro.set_assunto(input("Digite o novo assunto: "))
+
+            elif escolha == "editora":
+                livro.set_editora(input("Digite a nova editora: "))
+
+            elif escolha == "edicao":
+                livro.set_edicao(input("Digite a nova edição: "))
+
+            elif escolha == "isbn":
+                livro.set_isbn(input("Digite o novo isbn: "))
+
+            elif escolha == "ano":
+                livro.set_ano(input("Digite o novo ano: "))
+
+            else:
+                print("Escolha invalida...")
+
+listaLivros = [ 
+    Livro("livro Teste", "Autor Ruim", "Um monte de merda", "Editora Burra", "1º Edição", 5974800454590, 2022),
+    Livro("livro Ruim", "Autor Burro", "Umas parada ai", "Editora Péssima", "69º Edição", 1424080386011, 1987),
+    Livro("livro Feio", "Autor Ruim", "Umas parada ai", "Editora Burra", "96º Edição", 6188234457778, 1111),
+    Livro("livro Maneiro", "Autor Competente", "Esse vale a pena", "Editora Sangue Bom", "24º Edição", 7212696729254, 2002),
+    Livro("livro Ruim", "Autor Competente", "Um monte de merda", "Editora Repetida", "0º Edição", 1424080386011, 1937),  
+]
