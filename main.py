@@ -24,6 +24,33 @@ def livros():
     print("■ 0 - Voltar                             ■")
     print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
+    livro = int(input("Escolha uma opção: "))
+
+    while livro != 0:
+        if livro == 1:
+            print("batata")
+            for i in listaLivros:
+                print(i.get_titulo())
+
+        if livro == 2:
+            Livro.incluirLivro(listaLivros)
+        
+        if livro == 3:
+            Livro.excluirLivro(listaLivros)
+
+        if livro == 4:
+            Livro.alterarLivro(listaLivros)
+        
+        if livro == 5:
+            for i in listaLivros:
+                    print("\n")
+                    print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
+                    print("\n")
+
+        livros()
+        if livro == 0:
+            menu()
+
 def exemplares():
     print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
     print("■               EXEMPLARES               ■")
@@ -74,33 +101,6 @@ while escolha != 0:
     if escolha == 0:
         print("Saindo...")
         break 
-         
-livro = int(input("Escolha uma opção: "))
-
-while livro != 0:
-    if livro == 1:
-        print("batata")
-        for i in listaLivros:
-            print(i.get_titulo())
-
-    if livro == 2:
-        Livro.incluirLivro(listaLivros)
-    
-    if livro == 3:
-        Livro.excluirLivro(listaLivros)
-
-    if livro == 4:
-        Livro.alterarLivro(listaLivros)
-    
-    if livro == 5:
-        for i in listaLivros:
-                print("\n")
-                print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
-                print("\n")
-
-    livros()
-    if livro == 0:
-        menu()
         
     livro = int(input("Escolha uma opção: "))
 

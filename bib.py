@@ -71,7 +71,7 @@ class Livro:
         ano = int(input("Digite o ano do livro: "))
 
         listaLivro.append(Livro(titulo, autor, assunto, editora, edicao, isbn, ano))
-
+        print("Livro criado!")
     #Isso aqui ta um lixo
     def excluirLivro(listaLivro):
 
