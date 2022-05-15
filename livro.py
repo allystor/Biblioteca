@@ -1,9 +1,8 @@
-from tracemalloc import stop
-
 
 class Livro:
 
-    def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano):
+    def __init__(self, id , titulo, autor, assunto, editora, edicao, isbn, ano):
+        self.__id = id
         self.__titulo = titulo
         self.__autor = autor
         self.__assunto = assunto
@@ -13,7 +12,12 @@ class Livro:
         self.__ano = ano
 
     # GET E SET ================================================================
-
+    def get_id(self):
+        return self.__id
+    
+    def set_id(self, id):
+        self.__id = id
+        
     def get_titulo(self):
         return self.__titulo
     
@@ -153,10 +157,14 @@ class Livro:
             else:
                 print("Escolha invalida...")
 
+
 listaLivros = [ 
-    Livro("livro Teste", "Autor Ruim", "Um monte de merda", "Editora Burra", "1º Edição", 5974800454590, 2022),
-    Livro("livro Ruim", "Autor Burro", "Umas parada ai", "Editora Péssima", "69º Edição", 1424080386011, 1987),
-    Livro("livro Feio", "Autor Ruim", "Umas parada ai", "Editora Burra", "96º Edição", 6188234457778, 1111),
-    Livro("livro Maneiro", "Autor Competente", "Esse vale a pena", "Editora Sangue Bom", "24º Edição", 7212696729254, 2002),
-    Livro("livro Ruim", "Autor Competente", "Um monte de merda", "Editora Repetida", "0º Edição", 1424080386011, 1937),  
+    Livro(1,"livro Teste", "Autor Ruim", "Um monte de merda", "Editora Burra", "1º Edição", 5974800454590, 2022),
+    Livro(2,"livro Ruim", "Autor Burro", "Umas parada ai", "Editora Péssima", "69º Edição", 1424080386011, 1987),
+    Livro(3,"livro Feio", "Autor Ruim", "Umas parada ai", "Editora Burra", "96º Edição", 6188234457778, 1111),
+    Livro(4,"livro Maneiro", "Autor Competente", "Esse vale a pena", "Editora Sangue Bom", "24º Edição", 7212696729254, 2002),
+    Livro(5,"livro Ruim", "Autor Competente", "Um monte de merda", "Editora Repetida", "0º Edição", 1424080386011, 1937),  
 ]
+
+        
+    
