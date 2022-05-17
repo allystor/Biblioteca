@@ -1,9 +1,6 @@
-from tracemalloc import stop
-
-
 class Livro:
 
-    def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano):
+    def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
         self.__titulo = titulo
         self.__autor = autor
         self.__assunto = assunto
@@ -11,6 +8,7 @@ class Livro:
         self.__edicao = edicao
         self.__isbn = isbn
         self.__ano = ano
+        self.__categoria = categoria
 
     # GET E SET ================================================================
 
@@ -56,6 +54,12 @@ class Livro:
     def set_ano(self, ano):
         self.__ano = ano
 
+    def get_cattegoria(self):
+        return self.__categoria
+
+    def set_categoria(self, categoria):
+        self.__categoria = categoria
+
     #================================================================
 
     def incluirLivro(listaLivro):
@@ -69,6 +73,7 @@ class Livro:
         edicao = input("Digite a edição do livro: ")
         isbn = int(int(input("Digite o ISBN do livro: ")))
         ano = int(input("Digite o ano do livro: "))
+        categoria = str(input("Digite a categoria do livro: "))
 
         listaLivro.append(Livro(titulo, autor, assunto, editora, edicao, isbn, ano))
 
