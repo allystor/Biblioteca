@@ -2,17 +2,16 @@ from livro import Livro, listaLivros
 from exemplar import Exemplar
 def main():
     try:
-        def menu():
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■              BIBLIOTECA                ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■ 1 - Livros                             ■")
-            print("■ 2 - Exemplares                         ■")
-            print("■ 3 - Categorias                         ■")
-            print("■ 4 - Acervos                            ■")
-            print("■ 0 - Encerrar                           ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-        menu()
+        
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("■              BIBLIOTECA                ■")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("■ 1 - Livros                             ■")
+        print("■ 2 - Exemplares                         ■")
+        print("■ 3 - Categorias                         ■")
+        print("■ 4 - Acervos                            ■")
+        print("■ 0 - Encerrar                           ■")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
         def livros():
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
@@ -50,7 +49,6 @@ def main():
                             print("\n")
                 livros()
                 if livro == 0:
-                    menu()
                     break
 
         def exemplares():
@@ -69,7 +67,6 @@ def main():
                 if exemplar == 2:
                     Exemplar.excluirExemplar(listaLivros)
                 if exemplar == 0:
-                    menu()
                     break
 
         def categorias():
