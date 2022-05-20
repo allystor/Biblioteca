@@ -2,17 +2,15 @@ from livro import Livro, listaLivros
 from exemplar import Exemplar
 def main():
     try:
-        def menu():
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■              BIBLIOTECA                ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■ 1 - Livros                             ■")
-            print("■ 2 - Exemplares                         ■")
-            print("■ 3 - Categorias                         ■")
-            print("■ 4 - Acervos                            ■")
-            print("■ 0 - Encerrar                           ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-        menu()
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("■              BIBLIOTECA                ■")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("■ 1 - Livros                             ■")
+        print("■ 2 - Exemplares                         ■")
+        print("■ 3 - Categorias                         ■")
+        print("■ 4 - Acervos                            ■")
+        print("■ 0 - Encerrar                           ■")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
         def livros():
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
@@ -49,9 +47,6 @@ def main():
                             print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
                             print("\n")
                 livros()
-                if livro == 0:
-                    menu()
-                    break
 
         def exemplares():
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
@@ -62,15 +57,14 @@ def main():
             print("■ 3 - Alterar exemplar                   ■")
             print("■ 0 - Voltar                             ■")
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+            
             exemplar = int(input("Escolha uma opção: "))
+            
             while exemplar != 0:
                 if exemplar == 1:
                     Exemplar.consultarExemplar(listaLivros)
                 if exemplar == 2:
                     Exemplar.excluirExemplar(listaLivros)
-                if exemplar == 0:
-                    menu()
-                    break
 
         def categorias():
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
