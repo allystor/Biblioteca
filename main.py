@@ -2,10 +2,6 @@ from livro import Livro, listaLivros
 from exemplar import Exemplar
 def main():
     try:
-<<<<<<< HEAD
-=======
-        
->>>>>>> d366321b27af4228c304b5884dcf541aebca4709
         print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
         print("■              BIBLIOTECA                ■")
         print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
@@ -51,11 +47,6 @@ def main():
                             print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
                             print("\n")
                 livros()
-<<<<<<< HEAD
-=======
-                if livro == 0:
-                    break
->>>>>>> d366321b27af4228c304b5884dcf541aebca4709
 
         def exemplares():
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
