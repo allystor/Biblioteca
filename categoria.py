@@ -51,7 +51,7 @@ class Categoria():
     def alterarCategoria(listaCategorias):
         print("Alterando categorias")
         
-        busca = str(input("Informe o titulo do livro que deseja alterar: "))
+        busca = str(input("Informe o nome da categoria que deseja alterar: "))
         alterar = []
         contador = 0
 
@@ -76,7 +76,7 @@ class Categoria():
                 print(f"{contador} - {i.get_assunto()}")
                 contador += 1
 
-            opcao = int(input("Qual desses livros deseja alterar?: "))
+            opcao = int(input("Qual dessas categorias deseja alterar?: "))
             categoria = alterar[opcao - 1]
 
         while True:
@@ -84,16 +84,16 @@ class Categoria():
             print(f"Alterando livro '{categoria.get_nome()}'")
             print("Opções disponíveis: para alterar:\n1 - Nome\n2 - Descrição\n3 - Assunto")
             print("Digite 'sair' para sair")
-            escolha = input("Oque deseja alterar na categoria? ")
+            escolha = input("O que deseja alterar na categoria? ")
 
             if opcao == "sair":
                 break
 
             elif opcao == "nome":
-                categoria.set_nome(input("Digite o novo titulo: "))
+                categoria.set_nome(input("Digite o novo nome: "))
             
             elif escolha == "descricao":
-                categoria.set_descricao(input("Digite o novo autor: "))
+                categoria.set_descricao(input("Digite o nova descrição: "))
 
             elif escolha == "assunto":
                 categoria.set_assunto(input("Digite o novo assunto: "))
