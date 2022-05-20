@@ -57,14 +57,7 @@ def main():
             print("■ 3 - Alterar exemplar                   ■")
             print("■ 0 - Voltar                             ■")
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            
-            exemplar = int(input("Escolha uma opção: "))
-            
-            while exemplar != 0:
-                if exemplar == 1:
-                    Exemplar.consultarExemplar(listaLivros)
-                if exemplar == 2:
-                    Exemplar.excluirExemplar(listaLivros)
+           
 
         def categorias():
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
