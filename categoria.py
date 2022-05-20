@@ -44,8 +44,9 @@ class Categoria():
                 break
             
     def listarCategorias(listaCategorias):
+        print("Todas categorias:")
         for categoria in listaCategorias:
-            print(f"{categoria.get_nome()}")
+            print(f"Nome: {categoria.get_nome()}\nDescrição: {categoria.get_descricao()}\nAssunto: {categoria.get_assunto()}")
             
     def alterarCategoria(listaCategorias):
         print("Alterando categorias")
