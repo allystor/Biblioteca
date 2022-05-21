@@ -47,7 +47,13 @@ class Livro:
     
     def set_ano(self, ano):
         self.__ano = ano
-        
+    
+    def get_categoria(self):
+        return self.__categoria
+    
+    def set_categoria(self, categoria):
+        self.__categoria = categoria
+    
     def get_exemplares(self,):
         return self.__exemplares
     

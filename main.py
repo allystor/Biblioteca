@@ -1,6 +1,7 @@
 import os
 from tracemalloc import stop
 from usuario import Usuario, listaUsuarios
+from livro import Livro, livroDeLivros
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -80,6 +81,26 @@ while True:
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
             escolha = int(input("Escolha uma opção: "))
-
+            
+            while escolha == 1:
+                print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                print("|       Cadastro de livros         |")
+                print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                print("| 1) Lista de livros               |")
+                print("| 2) Cadastrar livro               |")
+                print("| 3) Excluir livro                 |")
+                print("| 4) Alterar livro                 |")
+                print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                
+                opcao = int(input("Escolha uma opção: "))
+                
+                if opcao == 1:
+                    Livro.listarLivros(livroDeLivros)
+                if opcao == 2:
+                    Livro.incluirNovoLivro(livroDeLivros)
+                if opcao == 3:
+                    Livro.excluirLivro(livroDeLivros)
+                if opcao == 4:
+                    Livro.alterarLivro(livroDeLivros)
             if escolha == 5:
                 break
