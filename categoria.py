@@ -1,4 +1,4 @@
-class Categoria():
+class Categoria:
 
     def __init__(self, nome, descricao, assunto):
 
@@ -71,9 +71,7 @@ class Categoria():
             contador = 1
 
             for i in listaCategorias:
-                print(f"{contador} - {i.get_nome()}")
-                print(f"{contador} - {i.get_descricao()}")
-                print(f"{contador} - {i.get_assunto()}")
+                print(f"Nome: {i.get_nome()}\nDescrição: {i.get_descricao()}\nAssunto: {i.get_assunto()}")
                 contador += 1
 
             opcao = int(input("Qual dessas categorias deseja alterar?: "))

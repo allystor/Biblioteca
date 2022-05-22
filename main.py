@@ -2,6 +2,7 @@ import os
 from tracemalloc import stop
 from usuario import Usuario, listaUsuarios
 from livro import Livro, livroDeLivros
+from exemplares import Exemplar
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -82,25 +83,55 @@ while True:
 
             escolha = int(input("Escolha uma opção: "))
             
-            while escolha == 1:
-                print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-                print("|       Cadastro de livros         |")
-                print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-                print("| 1) Lista de livros               |")
-                print("| 2) Cadastrar livro               |")
-                print("| 3) Excluir livro                 |")
-                print("| 4) Alterar livro                 |")
-                print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+            if escolha == 1:
+                def menuLivro():
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("|       Cadastro de livros         |")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("| 1) Lista de livros               |")
+                    print("| 2) Cadastrar livro               |")
+                    print("| 3) Excluir livro                 |")
+                    print("| 4) Alterar livro                 |")
+                    print("| 5) Voltar                        |")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    
+                    opcao = int(input("Escolha uma opção: "))
+                    
+                    if opcao == 1:
+                        Livro.listarLivros(livroDeLivros)
+                    if opcao == 2:
+                        Livro.incluirNovoLivro(livroDeLivros)
+                    if opcao == 3:
+                        Livro.excluirLivro(livroDeLivros)
+                    if opcao == 4:
+                        Livro.alterarLivro(livroDeLivros)
+                    if opcao == 5:
+                        return usuario.get_tipo()
+                        
+                menuLivro()
+            if escolha == 2:
+                def menuExemplar():
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("|     Cadastro de exemplares      |")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("| 1) Lista de exemplares          |")
+                    print("| 2) Cadastrar exemplar           |")
+                    print("| 3) Excluir exemplar             |")
+                    print("| 4) voltar                       |")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
                 
-                opcao = int(input("Escolha uma opção: "))
-                
-                if opcao == 1:
-                    Livro.listarLivros(livroDeLivros)
-                if opcao == 2:
-                    Livro.incluirNovoLivro(livroDeLivros)
-                if opcao == 3:
-                    Livro.excluirLivro(livroDeLivros)
-                if opcao == 4:
-                    Livro.alterarLivro(livroDeLivros)
+                    opcao = int(input("Escolha uma opção: "))
+                    if opcao == 1:
+                        Exemplar.consultarExemplar(livroDeLivros)
+                    if opcao == 2:
+                        Exemplar.incluirExemplar(livroDeLivros)
+                    if opcao == 3:
+                        Exemplar.excluirExemplar(livroDeLivros)
+                    if opcao == 4:
+                        return usuario.get_tipo()
+                menuExemplar()
+        
+                    
+                    
             if escolha == 5:
                 break

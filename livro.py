@@ -54,11 +54,11 @@ class Livro:
     def set_categoria(self, categoria):
         self.__categoria = categoria
     
-    def get_exemplares(self,):
+    def get_exemplares(self):
         return self.__exemplares
     
     def set_exemplares(self, exemplares):
-        self.__exemplares = exemplares
+        self.__extemplares = exemplares
     
     #================================================
     
