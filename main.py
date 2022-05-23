@@ -1,5 +1,5 @@
 from livro import Livro, listaLivros
-from exemplar import Exemplar
+from exemplares import Exemplar
 def main():
     try:
         print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
