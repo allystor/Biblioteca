@@ -1,108 +1,136 @@
-from livro import Livro, listaLivros
+import os
+from tracemalloc import stop
+from usuario import Usuario, listaUsuarios
+from livro import Livro, livroDeLivros
 from exemplares import Exemplar
-def main():
-    try:
-        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-        print("■              BIBLIOTECA                ■")
-        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-        print("■ 1 - Livros                             ■")
-        print("■ 2 - Exemplares                         ■")
-        print("■ 3 - Categorias                         ■")
-        print("■ 4 - Acervos                            ■")
-        print("■ 0 - Encerrar                           ■")
-        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
-        def livros():
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■              lIVROS                    ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■ 1 - Listar titulos                     ■")
-            print("■ 2 - Adicionar livro                    ■")
-            print("■ 3 - Excluir livro                      ■")
-            print("■ 4 - Alterar livro                      ■")
-            print("■ 5 - Listar todas informações           ■")
-            print("■ 0 - Voltar                             ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
-            livro = int(input("Escolha uma opção: "))
+#■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#■            SISTEMA BIBLIOTECA                   ■
+#■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-            while livro != 0:
-                if livro == 1:
-                    print("batata")
-                    for i in listaLivros:
-                        print(i.get_titulo())
-
-                if livro == 2:
-                    Livro.incluirLivro(listaLivros)
-                
-                if livro == 3:
-                    Livro.excluirLivro(listaLivros)
-
-                if livro == 4:
-                    Livro.alterarLivro(listaLivros)
-                
-                if livro == 5:
-                    for i in listaLivros:
-                            print("\n")
-                            print(f"Titulo: {i.get_titulo()}\n Autor: {i.get_autor()}\n Assunto: {i.get_assunto()}\n Editora: {i.get_editora()}\n Edição: {i.get_edicao()}\n ISBN: {i.get_isbn()}\n Ano de publicação:{i.get_ano()}")
-                            print("\n")
-                livros()
-
-        def exemplares():
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■               EXEMPLARES               ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■ 1 - Consultar exemplares               ■")
-            print("■ 2 - Excluir exemplar                   ■")
-            print("■ 3 - Alterar exemplar                   ■")
-            print("■ 0 - Voltar                             ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-           
-
-        def categorias():
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■              CATEGORIAS                ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■ 1 - Listar categorias                  ■")
-            print("■ 2 - Adicionar categoria                ■")
-            print("■ 3 - Excluir categoria                  ■")
-            print("■ 4 - Alterar categoria                  ■")
-            print("■ 5 - Listar todas informações           ■")
-            print("■ 0 - Voltar                             ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")      
-
-        def acervos():
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■              ACERVO                   ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("■ 1 - Listar acervo                     ■")
-            print("■ 2 - Adicionar acervo                  ■")
-            print("■ 3 - Excluir acervo                    ■")
-            print("■ 4 - Alterar acervo                    ■")
-            print("■ 5 - Listar todas informações          ■")
-            print("■ 0 - Voltar                            ■")
-            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-
-        escolha = int(input("Escolha uma opção: "))
-
-        while escolha != 0:
-            if escolha == 1:
-                livros()
-            if escolha == 2:
-                exemplares()
-            if escolha == 3:
-                categorias()
-            if escolha == 4:
-                acervos()
-            if escolha == 0:
-                print("Saindo...")
-                break 
-    except:
-        print("Opção inválida")
-if __name__ == "__main__":
-    main()
-
-
+# ⮞LOGIN =============================================
+def menuLivro():
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+    print("|       Cadastro de livros         |")
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+    print("| 1) Lista de livros               |")
+    print("| 2) Cadastrar livro               |")
+    print("| 3) Excluir livro                 |")
+    print("| 4) Alterar livro                 |")
+    print("| 5) Voltar                        |")
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
     
+    opcao = int(input("Escolha uma opção: "))
+    
+    if opcao == 1:
+        Livro.listarLivros(livroDeLivros)
+    if opcao == 2:
+        Livro.incluirNovoLivro(livroDeLivros)
+    if opcao == 3:
+        Livro.excluirLivro(livroDeLivros)
+    if opcao == 4:
+        Livro.alterarLivro(livroDeLivros)
+    if opcao == 5:
+        return
+def menuExemplar():
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+    print("|     Cadastro de exemplares      |")
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+    print("| 1) Lista de exemplares          |")
+    print("| 2) Cadastrar exemplar           |")
+    print("| 3) Excluir exemplar             |")
+    print("| 4) voltar                       |")
+    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
+    opcao = int(input("Escolha uma opção: "))
+    if opcao == 1:
+        Exemplar.consultarExemplar(livroDeLivros)
+    if opcao == 2:
+        Exemplar.incluirExemplar(livroDeLivros)
+    if opcao == 3:
+        Exemplar.excluirExemplar(livroDeLivros)
+    if opcao == 4:
+        return
+while True:
+    while True:
 
+        cls()
+
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("|           Login            |")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("|                            |")
+        print("| ⯈ Username:                ")
+        print("|   Senha:                    ")
+        print("|                            |")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+
+        login = input("Digite o username: ")
+        cls()
+
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("|           Login            |")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print("|                            |")
+        print(f"|   Username: {login}        ")
+        print("| ⯈ Senha:                   ")
+        print("|                            |")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+
+        senha = input("Digite a senha: ")
+
+        login, usuario = Usuario.logar(listaUsuarios, login, senha)
+
+        if login:
+            break
+        else:
+            print("Username/Senha incorreto!")
+            input("Aperte enter para continuar... ")
+
+    # FIM LOGIN ============================================================
+
+    # ⮞MENUS ==============================================================
+
+    print(usuario.get_tipo())
+    if usuario.get_tipo() == None:
+        print("Esse usuário possui erro de cadastro!")
+        quit()
+
+    if usuario.get_tipo() == "usuario":
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        print(f"   {usuario.get_nome()}           {usuario.get_tipo().capitalize()} ")
+        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+        #Esse inutil só pode ver acervo, mas eu n implementei esse lixo ainda
+
+    if usuario.get_tipo() == "bibliotecario":
+        while True:
+
+            cls()
+
+            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+            print(f"   {usuario.get_nome()}           {usuario.get_tipo().capitalize()} ")
+            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+            print("|                                  |")
+            print("| 1) Cadastrar Livro               |")
+            print("| 2) Cadastrar Exemplar            |")
+            print("| 3) Cadastrar Categoria           |")
+            print("| 4) Consultar Acervo              |")
+            print("| 5) Sair                          |")
+            print("|                                  |")
+            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+
+            escolha = int(input("Escolha uma opção: "))
+            
+            if escolha == 1:
+                
+                menuLivro()
+            if escolha == 2:
+                menuExemplar()
+        
+                    
+                    
+            if escolha == 5:
+                break

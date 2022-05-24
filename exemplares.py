@@ -27,7 +27,7 @@ class Exemplar(Livro):
             for livro in livroDeLivros:
                 print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
             titulo = str(input("Digite o titulo do livro que deseja incluir: "))
-            numero = int(input("Digite o número do exemplar: "))
+            numero = int(input("Digite o número do exemplares: "))
             for livro in livroDeLivros:
                 if livro.get_titulo().lower() == titulo.lower():
                     livro.set_numero(numero)
@@ -36,7 +36,6 @@ class Exemplar(Livro):
 
     def consultarExemplar(livroDeLivros):
         pesquisar = str(input("Digite o titulo do livro que deseja consultar: "))
-
         for livro in livroDeLivros:
             if pesquisar == Livro.get_titulo(livroDeLivros).lower():
                 print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
@@ -45,15 +44,9 @@ class Exemplar(Livro):
     def excluirExemplar(livroDeLivros):
         pesquisar = str(input("Digite o titulo do livro que deseja excluir: "))
         for livro in livroDeLivros:
-            if livro.get_titulo().lower() == pesquisar.lower():
-                livro.set_exemplares(livroDeLivros)
-                print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
-                numero = int(input("Digite o número do exemplar que deseja excluir: "))
-                for livro in livroDeLivros:
-                    if livro.get_numero() == numero:
-                        livroDeLivros.pop(livro)
-                        print("Exemplar excluido!")
-                        break
-                    
+            if pesquisar == Livro.get_titulo(livroDeLivros).lower():
+                livro.set_exemplares(livro.get_exemplares() - 1)
+                print("Exemplar excluido!")
+                break        
 #zona de testes
 Exemplar.incluirExemplar(livroDeLivros)

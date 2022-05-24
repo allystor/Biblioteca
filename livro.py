@@ -40,7 +40,7 @@ class Livro:
         return self.__editora
 
     def set_editora(self, editora):
-        return self.__editora
+        self.__editora = editora
     
     def get_ano(self):
         return self.__ano
@@ -58,7 +58,7 @@ class Livro:
         return self.__exemplares
     
     def set_exemplares(self, exemplares):
-        self.__extemplares = exemplares
+        self.__exemplares = exemplares
     
     #================================================
     
@@ -72,6 +72,7 @@ class Livro:
         categoria = str(input("Digite a categoria do livro: "))
         exemplares = int(input("Digite o numero de exemplares do livro: "))
         livroDeLivros.append(Livro(titulo, autor, edicao, isbn, editora, ano, categoria, exemplares))
+        
     
     def excluirLivro(livroDeLivros):
         titulo = str(input("Digite o titulo do livro: "))
