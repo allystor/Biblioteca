@@ -1,17 +1,9 @@
 from livro import Livro, livroDeLivros
 
 class Exemplar(Livro):
-    def __init__(self, id, titulo, autor, edicao, isbn, editora, ano, categoria, numero):
-        super().__init__(id, titulo, autor, edicao, isbn, editora, ano, categoria)
-        self.__id = id
+    def __init__(self, titulo, autor, edicao, isbn, editora, ano, categoria, numero):
+        super().__init__(titulo, autor, edicao, isbn, editora, ano, categoria)
         self.__numero = numero
-
-    def get_id(self):
-        return self.__id
-    
-    def set_id(self):
-        self.__id = self.__id
-    
     def get_numero(self):
         return self.__numero
     
@@ -19,21 +11,13 @@ class Exemplar(Livro):
         self.__numero = numero
 
     def incluirExemplar(livroDeLivros):
-        livro = livroDeLivros[0]
-        if livro.set_exemplares(livroDeLivros) == 0:
-            print("Não há livros cadastrados")
-        elif livro.set_exemplares(livroDeLivros) == 1:
-            print("Livros cadastrados: ")
-            for livro in livroDeLivros:
-                print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
-            titulo = str(input("Digite o titulo do livro que deseja incluir: "))
-            numero = int(input("Digite o número do exemplares: "))
-            for livro in livroDeLivros:
-                if livro.get_titulo().lower() == titulo.lower():
-                    livro.set_numero(numero)
-                    print("Exemplar incluido!")
-                    break
-
+        qntd = Livro.get_exemplares()
+        Exemplar = int(input("Digite a quantidade de exemplares: "))
+        if qntd > 0:
+            for i in range(qntd):
+                livroDeLivros.append(Exemplar("Titulo", "Autor", 1, 1, "Editora", 1, "Categoria", qntd))
+                print("Exemplar incluido com sucesso!")
+            
     def consultarExemplar(livroDeLivros):
         pesquisar = str(input("Digite o titulo do livro que deseja consultar: "))
         for livro in livroDeLivros:
