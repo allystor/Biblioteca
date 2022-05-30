@@ -28,8 +28,51 @@ class Categoria():
 
     #=================================================#
 
-    def incluirCategoria(listaCategorias):
+    def incluirCategoria(listaCategorias, nome, descricao, assunto):
+
+        try:
+
+            listaCategorias.append(Categoria(nome, descricao, assunto))
+            return True
+
+        except:
+
+            return False
+        
+    def alterarCategoria(listaCategorias, alteracao, nome, descricao, assunto):
+
+        try:
+
+            for categoria in listaCategorias:
+                if alteracao == categoria.get_nome():
+                    alteracao = categoria
+                                
+            alteracao.set_nome(nome)
+            alteracao.set_descricao(descricao)
+            alteracao.set_assunto(assunto)
+
+            return True
+
+        except:
+
+            return False
+
+    def consultarCategoria(listaCategorias, consulta):
+
+        for categoria in listaCategorias:
+            if consulta.lower() == categoria.get_nome().lower():
+
+                return True, categoria.get_nome(), categoria.get_descricao(), categoria.get_assunto()
+
+        else:
+
+            return False, None, None, None
+
+    def excluirCategoria(listaCategorias):
         pass
+
+
+        
 
 listaCategorias = [
     Categoria("Biografia", "Gênero no qual o autor narra sobre a vida de uma pessoa ou de várias pessoas.", None),
