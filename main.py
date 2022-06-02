@@ -1,4 +1,5 @@
 import os
+from this import d
 from categoria import *
 from usuario import *
 from livro import *
@@ -103,7 +104,7 @@ while True:
 
             if escolha == 1:
 
-                #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ LIVRO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+                #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ LIVRO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■#
 
                 while True:
                     cls()
@@ -190,8 +191,76 @@ while True:
                 #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
             if escolha == 2:
-                pass
-
+                #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ LIVRO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■#
+                while True:
+                    
+                    cls()
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print(f"   {usuario.get_nome()}           {usuario.get_tipo().capitalize()} ")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("|             EXEMPLAR            |")
+                    print("|                                 |")
+                    print("| 1) Incluir novo exemplar        |")
+                    print("| 2) Alterar dados do exemplar    |")
+                    print("| 3) Consultar dados do exemplar  |")
+                    print("|                                 |")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    escolha = int(input("Escolha uma opção: "))
+                    
+                    if escolha == 1:
+                        cls()
+                        
+                        print("Incluindo novo exemplar...")
+                        disponibilidade = input("Informe a disponibilidade do exemplar: ")
+                        livro = input("Informe o livro do exemplar: ")
+                        
+                        teste = Exemplar.incluirExemplar(listaLivros, disponibilidade, livro)
+                        
+                        if teste == True:
+                            print("")
+                            print("Exemplar adicionado com sucesso!!")
+                            input("Aperte enter para continuar... ")
+                        else:
+                            print("")
+                            print("Algo deu errado no registro!")
+                            print("")
+                            print("O exemplar deve pertencer a um livro que já existe!")
+                            print("")
+                            input("Aperte enter para continuar... ")
+                            
+                    if escolha == 2:
+                        titulo = input("Informe o titulo do livro que deseja alterar: ")
+                        disponibilidade = input("Informe a disponibilidade do exemplar: ")
+                        
+                        alterar = Exemplar.alterarExemplar(listaLivros, titulo, disponibilidade)
+                        
+                        if alterar == True:
+                            print("")
+                            print("Exemplar alterado com sucesso!!")
+                            input("Aperte enter para continuar... ")
+                        else:
+                            print("")
+                            print("Algo deu errado no registro!")
+                            print("")
+                            print("O exemplar deve pertencer a um livro que já existe!")
+                            print("")
+                            input("Aperte enter para continuar... ")
+                    
+                    if escolha == 3:
+                        titulo = input("Informe o titulo do livro que deseja consultar: ")
+                        
+                        teste , disponibilidade, livro = Exemplar.consultarExemplar(listaLivros, titulo)
+                        
+                        if teste == True:
+                            print("")
+                            print(f"Disponibilidade : {disponibilidade}")
+                            print(f"Livro : {livro}")
+                            print("")
+                            input("Aperte enter para continuar... ")
+                        else: 
+                            print(f"Exemplar '{titulo}' Não encontrado")
+                            input("Aperte enter para continuar... ")
+                            
             if escolha == 3:
 
 

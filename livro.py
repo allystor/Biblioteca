@@ -118,11 +118,17 @@ class Exemplar(Livro):
         def consultarExemplar(listaLivros, titulo):
             for exemplar in listaLivros:
                 if exemplar.get_titulo() == titulo:
-                    return True, exemplar.get_disponivel()
-            return False, None
-        
+                    return True, exemplar.get_titulo(), exemplar.get_autor(), exemplar.get_assunto(), exemplar.get_editora(), exemplar.get_edicao(), exemplar.get_isbn(), exemplar.get_ano(), exemplar.get_categoria(), exemplar.get_disponivel()
+            return False, None, None, None, None, None, None, None, None, None, None
+                
         def alterarExemplar(listaLivros):
-            pass
+            contador = 0
+            for exemplar in listaLivros:
+                if exemplar.get_disponivel() == True:
+                    contador += 1
+                if contador > 0:
+                    return True
+            return False
         
         def incluirExemplar(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
             for categoriaValida in listaCategorias:
