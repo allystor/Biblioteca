@@ -1,59 +1,41 @@
-from livro import Livro, livroDeLivros
-
+from livro import Livro, listaLivros
+from categoria import Categoria, listaCategorias
 class Exemplar(Livro):
-    def __init__(self, id, titulo, autor, edicao, isbn, editora, ano, categoria, numero):
-        super().__init__(id, titulo, autor, edicao, isbn, editora, ano, categoria)
-        self.__id = id
-        self.__numero = numero
+    def __init__(self, titulo, autor, edicao, isbn, editora, ano, categoria, exemplares):
+        super().__init__(titulo, autor, edicao, isbn, editora, ano, categoria)
+        self.__exemplares = exemplares
 
-    def get_id(self):
-        return self.__id
+    def get_exemplares(self):
+        return self.__exemplares
     
-    def set_id(self):
-        self.__id = self.__id
-    
-    def get_numero(self):
-        return self.__numero
-    
-    def set_numero(self, numero):
-        self.__numero = numero
+    def set_exemplares(self, exemplares):
+        self.__exemplares = exemplares
 
-    def incluirExemplar(livroDeLivros):
-        livro = livroDeLivros[0]
-        if livro.set_exemplares(livroDeLivros) == 0:
-            print("Não há livros cadastrados")
-        elif livro.set_exemplares(livroDeLivros) == 1:
-            print("Livros cadastrados: ")
-            for livro in livroDeLivros:
-                print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
-            titulo = str(input("Digite o titulo do livro que deseja incluir: "))
-            numero = int(input("Digite o número do exemplar: "))
-            for livro in livroDeLivros:
-                if livro.get_titulo().lower() == titulo.lower():
-                    livro.set_numero(numero)
-                    print("Exemplar incluido!")
-                    break
-
-    def consultarExemplar(livroDeLivros):
+    def incluirExemplar(listaLivro, titulo, autor, edicao, isbn, editora, ano, categoria, exemplares):
+        exemplar = Exemplar(titulo, autor, edicao, isbn, editora, ano, categoria, exemplares)
+        exemplar.get_exemplares = int(input("Digite o numero de exemplares: "))
+        if exemplar > 0:
+            exemplar += exemplar
+            print("Exemplar adicionado com sucesso!")
+            return True
+        elif exemplar == 0:
+            print("Exemplar não adicionado!")
+            return False
+        
+        
+    def consultarExemplar(listaLivros):
         pesquisar = str(input("Digite o titulo do livro que deseja consultar: "))
-
-        for livro in livroDeLivros:
-            if pesquisar == Livro.get_titulo(livroDeLivros).lower():
+        for livro in listaLivros:
+            if pesquisar == Livro.get_titulo(listaLivros).lower():
                 print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
                 break
             
-    def excluirExemplar(livroDeLivros):
+    def excluirExemplar(listaLivros):
         pesquisar = str(input("Digite o titulo do livro que deseja excluir: "))
-        for livro in livroDeLivros:
-            if livro.get_titulo().lower() == pesquisar.lower():
-                livro.set_exemplares(livroDeLivros)
-                print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
-                numero = int(input("Digite o número do exemplar que deseja excluir: "))
-                for livro in livroDeLivros:
-                    if livro.get_numero() == numero:
-                        livroDeLivros.pop(livro)
-                        print("Exemplar excluido!")
-                        break
+        if pesquisar == Livro.get_titulo(listaLivros).lower():
+            listaLivros.remove(Livro)
+            print("Livro excluido com sucesso!")
+            return True
                     
 #zona de testes
-Exemplar.incluirExemplar(livroDeLivros)
+Exemplar.incluirExemplar(listaLivros, "O Senhor dos Anéis", "J.R.R. Tolkien", "1ª Edição", "0-395-07477-5", "Minha Biblioteca", "1954", "Fantasia", "1")

@@ -100,3 +100,38 @@ listaLivros = [
 ]
 
 Livro.consultarLivro(listaLivros, "pipo o sapo")
+
+#ACHO Q NÃO É O Q EU QUERO, MAS É O Q EU QUERO
+class Exemplar(Livro):
+    
+        def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
+    
+            Livro.__init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria)
+            self.__disponivel = disponivel
+    
+        def get_disponivel(self):
+            return self.__disponivel
+    
+        def set_disponivel(self, disponivel):
+            self.__disponivel = disponivel
+    
+        def consultarExemplar(listaLivros, titulo):
+            for exemplar in listaLivros:
+                if exemplar.get_titulo() == titulo:
+                    return True, exemplar.get_disponivel()
+            return False, None
+        
+        def alterarExemplar(listaLivros):
+            pass
+        
+        def incluirExemplar(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
+            for categoriaValida in listaCategorias:
+                if categoria == categoriaValida.get_nome():
+                    try:
+                        listaLivros.append(Livro(titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel))
+                        return True
+                    except:
+                        return False
+            return False
+
+Exemplar.incluirExemplar(listaLivros, listaCategorias, "Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia", True)
