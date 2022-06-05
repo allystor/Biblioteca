@@ -65,7 +65,7 @@ class Livro:
 
     #================================================================
 
-    def incluirLivro(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+    def incluirLivro(titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
         
         for categoriaValida in listaCategorias:
             if categoria == categoriaValida.get_nome():
@@ -77,12 +77,27 @@ class Livro:
             
         return False
 
-    def alterarLivro(listaLivros):
-        pass
+    def alterarLivro(alteracao, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+            
+            try:
+                for livro in listaLivros:
+                    if alteracao == livro.get_titulo():
+                        alteracao = livro
 
+                alteracao.set_titulo(titulo)
+                alteracao.set_autor(autor)
+                alteracao.set_assunto(assunto)
+                alteracao.set_editora(editora)
+                alteracao.set_edicao(edicao)
+                alteracao.set_isbn(isbn)
+                alteracao.set_ano(ano)
+                alteracao.set_categoria(categoria)
+        
+                return True
+            except:
+                return False
 
-
-    def consultarLivro(listaLivros, titulo):
+    def consultarLivro(titulo):
 
         for livro in listaLivros:
             if titulo.lower() == livro.get_titulo().lower():
@@ -99,7 +114,7 @@ listaLivros = [
     Livro("Biblia", "Deus", "To sem ideia de livro e esse é o mais famoso que eu lembrei", "Heaven", 0, 0000000000, 0, "Drama")
 ]
 
-Livro.consultarLivro(listaLivros, "pipo o sapo")
+Livro.consultarLivro("pipo o sapo")
 
 #ACHO Q NÃO É O Q EU QUERO, MAS É O Q EU QUERO
 class Exemplar(Livro):
@@ -115,22 +130,23 @@ class Exemplar(Livro):
         def set_disponivel(self, disponivel):
             self.__disponivel = disponivel
     
-        def consultarExemplar(listaLivros, titulo):
+        def consultarExemplar(titulo):
             for exemplar in listaLivros:
                 if exemplar.get_titulo() == titulo:
                     return True, exemplar.get_titulo(), exemplar.get_autor(), exemplar.get_assunto(), exemplar.get_editora(), exemplar.get_edicao(), exemplar.get_isbn(), exemplar.get_ano(), exemplar.get_categoria(), exemplar.get_disponivel()
             return False, None, None, None, None, None, None, None, None, None, None
                 
-        def alterarExemplar(listaLivros):
+        def alterarExemplar(titulo,disponivel):
             contador = 0
+            exemplar = Livro.consultarLivro(titulo)
             for exemplar in listaLivros:
-                if exemplar.get_disponivel() == True:
-                    contador += 1
-                if contador > 0:
+                if exemplar.get_titulo() == titulo:
+                    listaLivros[contador].set_disponivel(disponivel)
                     return True
+                contador += 1
             return False
         
-        def incluirExemplar(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
+        def incluirExemplar(titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
             for categoriaValida in listaCategorias:
                 if categoria == categoriaValida.get_nome():
                     try:
@@ -140,4 +156,4 @@ class Exemplar(Livro):
                         return False
             return False
 
-Exemplar.incluirExemplar(listaLivros, listaCategorias, "Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia", True)
+Exemplar.incluirExemplar("Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia", True)

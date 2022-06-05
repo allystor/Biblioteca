@@ -1,3 +1,6 @@
+from os import remove
+
+
 class Categoria:
 
     def __init__(self, nome, descricao, assunto):
@@ -28,7 +31,7 @@ class Categoria:
 
     #=================================================#
 
-    def incluirCategoria(listaCategorias, nome, descricao, assunto):
+    def incluirCategoria(nome, descricao, assunto):
 
         try:
 
@@ -39,7 +42,7 @@ class Categoria:
 
             return False
         
-    def alterarCategoria(listaCategorias, alteracao, nome, descricao, assunto):
+    def alterarCategoria(alteracao, nome, descricao, assunto):
 
         try:
 
@@ -57,7 +60,7 @@ class Categoria:
 
             return False
 
-    def consultarCategoria(listaCategorias, consulta):
+    def consultarCategoria(consulta):
 
         for categoria in listaCategorias:
             if consulta.lower() == categoria.get_nome().lower():
@@ -68,8 +71,15 @@ class Categoria:
 
             return False, None, None, None
 
-    def excluirCategoria(listaCategorias):
-        pass
+    def excluirCategoria(remover):
+        try:
+            for categoria in listaCategorias:
+                if remover == categoria.get_nome():
+                    listaCategorias.remove(categoria)
+                    return True
+                return True
+        except:
+            return False
 
 
         
