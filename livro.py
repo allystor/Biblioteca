@@ -118,42 +118,53 @@ Livro.consultarLivro("pipo o sapo")
 
 #ACHO Q NÃO É O Q EU QUERO, MAS É O Q EU QUERO
 class Exemplar(Livro):
-    
-        def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
-    
-            Livro.__init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria)
-            self.__disponivel = disponivel
-    
-        def get_disponivel(self):
-            return self.__disponivel
-    
-        def set_disponivel(self, disponivel):
-            self.__disponivel = disponivel
-    
-        def consultarExemplar(titulo):
+
+    def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
+
+        Livro.__init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria)
+        self.__disponivel = disponivel
+
+    def get_disponivel(self):
+        return self.__disponivel
+
+    def set_disponivel(self, disponivel):
+        self.__disponivel = disponivel
+
+    def consultarExemplar(titulo):
+        try:
             for exemplar in listaLivros:
-                if exemplar.get_titulo() == titulo:
+                if titulo.lower() == exemplar.get_titulo():
                     return True, exemplar.get_titulo(), exemplar.get_autor(), exemplar.get_assunto(), exemplar.get_editora(), exemplar.get_edicao(), exemplar.get_isbn(), exemplar.get_ano(), exemplar.get_categoria(), exemplar.get_disponivel()
+        except:    
             return False, None, None, None, None, None, None, None, None, None, None
-                
-        def alterarExemplar(titulo,disponivel):
-            contador = 0
+            
+    def alterarExemplar(titulo,disponivel):
+        try:
             exemplar = Livro.consultarLivro(titulo)
             for exemplar in listaLivros:
                 if exemplar.get_titulo() == titulo:
                     listaLivros[contador].set_disponivel(disponivel)
                     return True
                 contador += 1
+        except:
+            return False
+    
+    def incluirExemplar(exemplar):
+        try:
+            for incluir in listaLivros:
+                if exemplar == incluir.get_titulo():
+                        listaLivros.append(exemplar)        
+                        return True
+        except:
             return False
         
-        def incluirExemplar(titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
-            for categoriaValida in listaCategorias:
-                if categoria == categoriaValida.get_nome():
-                    try:
-                        listaLivros.append(Livro(titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel))
-                        return True
-                    except:
-                        return False
+    def excluirExemplar(exemplar):
+        try:
+            for remover in listaLivros:
+                if exemplar == remover.get_titulo():
+                    listaLivros.remove(remover)
+                    return True
+        except:
             return False
-
-Exemplar.incluirExemplar("Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia", True)
+    
+    

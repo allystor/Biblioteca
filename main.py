@@ -230,6 +230,7 @@ try:
                         print("| 1) Incluir novo exemplar        |")
                         print("| 2) Alterar dados do exemplar    |")
                         print("| 3) Consultar dados do exemplar  |")
+                        print("| 4) deletar exemplar             |")
                         print("|                                 |")
                         print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
                         escolha = int(input("Escolha uma opção: "))
@@ -241,7 +242,7 @@ try:
                             disponibilidade = input("Informe a disponibilidade do exemplar: ")
                             livro = input("Informe o livro do exemplar: ")
                             
-                            teste = Exemplar.incluirExemplar(listaLivros, disponibilidade, livro)
+                            teste = Exemplar.incluirExemplar(disponibilidade, livro)
                             
                             if teste == True:
                                 print("")

@@ -61,14 +61,11 @@ class Categoria:
             return False
 
     def consultarCategoria(consulta):
-
-        for categoria in listaCategorias:
-            if consulta.lower() == categoria.get_nome().lower():
-
-                return True, categoria.get_nome(), categoria.get_descricao(), categoria.get_assunto()
-
-        else:
-
+        try:
+            for categoria in listaCategorias:
+                if consulta.lower() == categoria.get_nome().lower():
+                    return True, categoria.get_nome(), categoria.get_descricao(), categoria.get_assunto()
+        except:
             return False, None, None, None
 
     def excluirCategoria(remover):
@@ -77,7 +74,6 @@ class Categoria:
                 if remover == categoria.get_nome():
                     listaCategorias.remove(categoria)
                     return True
-                return True
         except:
             return False
 
