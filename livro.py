@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+from operator import contains
+>>>>>>> Stashed changes
 from categoria import Categoria, listaCategorias
 
 class Livro:
@@ -65,7 +69,11 @@ class Livro:
 
     #================================================================
 
+<<<<<<< Updated upstream
     def incluirLivro(titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+=======
+    def incluirLivro(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+>>>>>>> Stashed changes
         
         for categoriaValida in listaCategorias:
             if categoria == categoriaValida.get_nome():
@@ -77,12 +85,24 @@ class Livro:
             
         return False
 
+<<<<<<< Updated upstream
     def alterarLivro(alteracao, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
             
             try:
                 for livro in listaLivros:
                     if alteracao == livro.get_titulo():
                         alteracao = livro
+=======
+    def alterarLivro(listaLivros, listaCategorias, alteracao, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+            
+            try:
+
+                for livro in listaLivros:
+
+                    if alteracao.lower() == livro.get_titulo().lower():
+                        alteracao = livro
+            
+>>>>>>> Stashed changes
 
                 alteracao.set_titulo(titulo)
                 alteracao.set_autor(autor)
@@ -91,6 +111,7 @@ class Livro:
                 alteracao.set_edicao(edicao)
                 alteracao.set_isbn(isbn)
                 alteracao.set_ano(ano)
+<<<<<<< Updated upstream
                 alteracao.set_categoria(categoria)
         
                 return True
@@ -98,6 +119,24 @@ class Livro:
                 return False
 
     def consultarLivro(titulo):
+=======
+
+                for categoriaTeste in listaCategorias:
+                    if categoria.lower() == categoriaTeste.get_nome().lower():
+                        alteracao.set_categoria(categoria.capitalize())
+                        return True
+                
+        
+                return False
+
+            except:
+                print("Merda ali")
+                return False
+
+
+
+    def consultarLivro(listaLivros, titulo):
+>>>>>>> Stashed changes
 
         for livro in listaLivros:
             if titulo.lower() == livro.get_titulo().lower():
@@ -106,6 +145,7 @@ class Livro:
 
         return False, None, None, None, None, None, None, None, None,
 
+<<<<<<< Updated upstream
 
 #SÃO 5 DA MANHÃ, NÃO ME JULGUE PELO OQ EU ESCREVER AQUI
 listaLivros = [
@@ -168,3 +208,35 @@ class Exemplar(Livro):
             return False
     
     
+=======
+    def excluirLivro(listaLivros, listaExemplares, livro):
+
+        for exemplar in listaExemplares:
+            if exemplar.get_livro().lower() == livro.lower():
+                print("Possui Exemplar")
+                return False
+        
+        contador = 0
+
+        for item in listaLivros:
+            if item.get_titulo().lower() == livro.lower():
+                listaLivros.pop(contador)
+                print("Sucesso")
+                print(contador)
+                return True
+            contador = contador + 1
+
+        print("Livro errado")
+        return False
+
+
+
+#SÃO 5 DA MANHÃ, NÃO ME JULGUE PELO OQ EU ESCREVER AQUI
+listaLivros = [
+    Livro("Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia"),
+    Livro("A Metamorfose", "Franz Kafka", "Isso é um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 3, 420420420420, 1915, "Ficção"),
+    Livro("Biblia", "Deus", "To sem ideia de livro e esse é o mais famoso que eu lembrei", "Heaven", 0, 0000000000, 0, "Drama"),
+    Livro("Teste", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia"),
+    Livro("Teste2", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia")
+]
+>>>>>>> Stashed changes
