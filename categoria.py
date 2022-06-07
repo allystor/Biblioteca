@@ -1,3 +1,6 @@
+from os import remove
+
+
 class Categoria:
 
     def __init__(self, nome, descricao, assunto):
@@ -28,78 +31,54 @@ class Categoria:
 
     #=================================================#
 
-    def incluirCategoria(listaCategorias):
-        nome = input("Digite o nome da categoria: ")
-        descricao = input("Digite a descricao da categoria: ")
-        assunto = input("Digite o assunto da categoria: ")
-        categoria = Categoria(nome, descricao, assunto)
-        listaCategorias.append(categoria)
-    
-    def excluirCategoria(listaCategorias):
-        nome = input("Digite o nome da categoria: ")
-        for categoria in listaCategorias:
-            if categoria.get_nome() == nome:
-                listaCategorias.remove(categoria)
-                print("Categoria excluida com sucesso!")
-                break
-            
-    def listarCategorias(listaCategorias):
-        print("Todas categorias:")
-        for categoria in listaCategorias:
-            print(f"Nome: {categoria.get_nome()}\nDescrição: {categoria.get_descricao()}\nAssunto: {categoria.get_assunto()}")
-            
-    def alterarCategoria(listaCategorias):
-        print("Alterando categorias")
+    def incluirCategoria(nome, descricao, assunto):
+
+        try:
+
+            listaCategorias.append(Categoria(nome, descricao, assunto))
+            return True
+
+        except:
+
+            return False
         
-        busca = str(input("Informe o nome da categoria que deseja alterar: "))
-        alterar = []
-        contador = 0
+    def alterarCategoria(alteracao, nome, descricao, assunto):
 
-        for categoria in listaCategorias:
-            if busca.lower() == categoria.get_nome().lower():
-                contador += 1
-                alterar.append(categoria)
+        try:
 
-        if contador == 0:
-            print("Não foi encontrado nenhuma categoria com esse nome!")
+            for categoria in listaCategorias:
+                if alteracao == categoria.get_nome():
+                    alteracao = categoria
+                                
+            alteracao.set_nome(nome)
+            alteracao.set_descricao(descricao)
+            alteracao.set_assunto(assunto)
 
-        elif contador == 1:
-            categoria = alterar[0]
+            return True
 
-        elif contador > 1:
-            print("Foram encontrados mais de uma categoria com esse nome!")
-            contador = 1
+        except:
 
-            for i in listaCategorias:
-                print(f"Nome: {i.get_nome()}\nDescrição: {i.get_descricao()}\nAssunto: {i.get_assunto()}")
-                contador += 1
+            return False
 
-            opcao = int(input("Qual dessas categorias deseja alterar?: "))
-            categoria = alterar[opcao - 1]
+    def consultarCategoria(consulta):
+        try:
+            for categoria in listaCategorias:
+                if consulta.lower() == categoria.get_nome().lower():
+                    return True, categoria.get_nome(), categoria.get_descricao(), categoria.get_assunto()
+        except:
+            return False, None, None, None
 
-        while True:
+    def excluirCategoria(remover):
+        try:
+            for categoria in listaCategorias:
+                if remover == categoria.get_nome():
+                    listaCategorias.remove(categoria)
+                    return True
+        except:
+            return False
 
-            print(f"Alterando livro '{categoria.get_nome()}'")
-            print("Opções disponíveis: para alterar:\n1 - Nome\n2 - Descrição\n3 - Assunto")
-            print("Digite 'sair' para sair")
-            escolha = input("O que deseja alterar na categoria? ")
 
-            if opcao == "sair":
-                break
-
-            elif opcao == "nome":
-                categoria.set_nome(input("Digite o novo nome: "))
-            
-            elif escolha == "descricao":
-                categoria.set_descricao(input("Digite o nova descrição: "))
-
-            elif escolha == "assunto":
-                categoria.set_assunto(input("Digite o novo assunto: "))
-
-            else:
-                print("Escolha invalida...")
-                
-    #ta rentável?
+        
 
 listaCategorias = [
     Categoria("Biografia", "Gênero no qual o autor narra sobre a vida de uma pessoa ou de várias pessoas.", None),

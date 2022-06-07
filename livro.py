@@ -1,17 +1,20 @@
-from categoria import Categoria
+from categoria import Categoria, listaCategorias
 
 class Livro:
-    def __init__(self, titulo, autor, edicao, isbn, editora, ano,categoria, exemplares):
+
+    def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+
         self.__titulo = titulo
         self.__autor = autor
-        self.__edicao = edicao
-        self.__isbn = isbn
+        self.__assunto = assunto
         self.__editora = editora
-        self.__ano = ano
+        self.__edicao = int(edicao)
+        self.__isbn = int(isbn)
+        self.__ano = int(ano)
         self.__categoria = categoria
-        self.__exemplares = exemplares
-        
-    #============MELANCOLIA============================
+
+    # GET E SET ================================================================
+
     def get_titulo(self):
         return self.__titulo
     
@@ -23,142 +26,125 @@ class Livro:
     
     def set_autor(self, autor):
         self.__autor = autor
+
+    def get_assunto(self):
+        return self.__assunto
+
+    def set_assunto(self, assunto):
+        self.__assunto = assunto
     
-    def get_edicao(self):
-        return self.__edicao
-    
-    def set_edicao(self, edicao):
-        self.__edicao = edicao
-        
-    def get_isbn(self):
-        return self.__isbn
-    
-    def set_isbn(self, isbn):
-        self.__isbn = isbn
-        
     def get_editora(self):
         return self.__editora
 
     def set_editora(self, editora):
         self.__editora = editora
     
-    def get_ano(self):
-        return self.__ano
+    def get_edicao(self):
+        return self.__edicao
     
+    def set_edicao(self, edicao):
+        self.__edicao = edicao
+    
+    def get_isbn(self):
+        return self.__isbn
+
+    def set_isbn(self, isbn):
+        self.__isbn = isbn
+    
+    def get_ano(self):
+        return self.__ano 
+
     def set_ano(self, ano):
         self.__ano = ano
-    
+
     def get_categoria(self):
         return self.__categoria
-    
+
     def set_categoria(self, categoria):
         self.__categoria = categoria
-    
-    def get_exemplares(self):
-        return self.__exemplares
-    
-    def set_exemplares(self, exemplares):
-        self.__exemplares = exemplares
-    
-    #================================================
-    
-    def incluirNovoLivro(livroDeLivros):
-        titulo = str(input("Digite o titulo do livro: "))
-        autor = str(input("Digite o autor do livro: "))
-        edicao = int(input("Digite a edicao do livro: "))
-        isbn = int(input("Digite o isbn do livro: "))
-        editora = str(input("Digite a editora do livro: "))
-        ano = int(input("Digite o ano do livro: "))
-        categoria = str(input("Digite a categoria do livro: "))
-        exemplares = int(input("Digite o numero de exemplares do livro: "))
-        livroDeLivros.append(Livro(titulo, autor, edicao, isbn, editora, ano, categoria, exemplares))
+
+    #================================================================
+
+    def incluirLivro(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
         
-    
-    def excluirLivro(livroDeLivros):
-        titulo = str(input("Digite o titulo do livro: "))
-        for livro in livroDeLivros:
-            if livro.get_titulo() == titulo:
-                livro.pop(livro)
-                print("Livro excluido com sucesso!")
-                break
+        for categoriaValida in listaCategorias:
+            if categoria == categoriaValida.get_nome():
+                try:
+                    listaLivros.append(Livro(titulo, autor, assunto, editora, edicao, isbn, ano, categoria))
+                    return True
+                except:
+                    return False
             
-    def listarLivros(livroDeLivros):
-        print("Livros disponíveis:")
-        for livro in livroDeLivros:
-            print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
-            print("\n")
-                        
-    def alterarLivro(livroDeLivros):
-        print("Alterando livro")
+        return False
+
+    def alterarLivro(listaLivros, listaCategorias, alteracao, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+            
+            try:
+
+                for livro in listaLivros:
+
+                    if alteracao.lower() == livro.get_titulo().lower():
+                        alteracao = livro
+            
+
+                alteracao.set_titulo(titulo)
+                alteracao.set_autor(autor)
+                alteracao.set_assunto(assunto)
+                alteracao.set_editora(editora)
+                alteracao.set_edicao(edicao)
+                alteracao.set_isbn(isbn)
+                alteracao.set_ano(ano)
+
+                for categoriaTeste in listaCategorias:
+                    if categoria.lower() == categoriaTeste.get_nome().lower():
+                        alteracao.set_categoria(categoria.capitalize())
+                        return True
+                
         
-        buscarLivro = str(input("Digite o titulo do livro: "))
-        alterar = []
+                return False
+
+            except:
+                print("Merda ali")
+                return False
+
+
+
+    def consultarLivro(listaLivros, titulo):
+
+        for livro in listaLivros:
+            if titulo.lower() == livro.get_titulo().lower():
+                
+                return True , livro.get_titulo() , livro.get_autor(), livro.get_assunto(), livro.get_editora(), livro.get_edicao(), livro.get_isbn(), livro.get_ano(), livro.get_categoria()
+
+        return False, None, None, None, None, None, None, None, None,
+
+    def excluirLivro(listaLivros, listaExemplares, livro):
+
+        for exemplar in listaExemplares:
+            if exemplar.get_livro().lower() == livro.lower():
+                print("Possui Exemplar")
+                return False
+        
         contador = 0
-        for livro in livroDeLivros:
-            if livro.get_titulo() == buscarLivro:
-                alterar.append(livro)
-                contador += 1
-        if contador == 0:
-            print("Não foi encontrado nenhum livro com esse titulo!")
-        
-        elif contador == 1:
-            livro = alterar[0]
-            
-        elif contador > 1:
-            print("Há mais de um livro com esse titulo!")
-            
-            contador = 1
-           
-            for livro in alterar:
-                print(f"{contador}:")
-                print(f"Titulo:{livro.get_titulo()}\nAutor:{livro.get_autor()}\nEdicao:{livro.get_edicao()}\nISBN:{livro.get_isbn()}\nEditora:{livro.get_editora()}\nAno:{livro.get_ano()}\nCategoria:{livro.get_categoria()}\nExemplares:{livro.get_exemplares()}")
-            contador += 1
-            opcao = int(input("Digite o numero do livro que deseja alterar: "))
-            livro = alterar[opcao-1]
-        while True:
-            opcao = int(input("Digite a opcao que deseja alterar:\n1 - Titulo\n2 - Autor\n3 - Edicao\n4 - ISBN\n5 - Editora\n6 - Ano\n7 - Categoria\n8 - Exemplares\n9 - Sair\n"))
-            if opcao == 1:
-                titulo = str(input("Digite o titulo do livro: "))
-                livro.set_titulo(titulo)
-                print("Titulo alterado com sucesso!")
-            elif opcao == 2:
-                autor = str(input("Digite o autor do livro: "))
-                livro.set_autor(autor)
-                print("Autor alterado com sucesso!")
-            elif opcao == 3:
-                edicao = int(input("Digite a edicao do livro: "))
-                livro.set_edicao(edicao)
-                print("Edicao alterado com sucesso!")
-            elif opcao == 4:
-                isbn = int(input("Digite o isbn do livro: "))
-                livro.set_isbn(isbn)
-                print("ISBN alterado com sucesso!")
-            elif opcao == 5:
-                editora = str(input("Digite a editora do livro: "))
-                livro.set_editora(editora)
-                print("Editora alterado com sucesso!")
-            elif opcao == 6:
-                ano = int(input("Digite o ano do livro: "))
-                livro.set_ano(ano)
-                print("Ano alterado com sucesso!")
-            elif opcao == 7:
-                categoria = str(input("Digite a categoria do livro: "))
-                livro.set_categoria(categoria)
-                print("Categoria alterado com sucesso!")
-            elif opcao == 8:
-                exemplares = int(input("Digite o numero de exemplares do livro: "))
-                livro.set_exemplares(exemplares)
-                print("Exemplares alterado com sucesso!")
-            elif opcao == 9:
-                break
-            
-livroDeLivros = [
-    Livro("Titulo 1", "Autor 1", 1, 1, "Editora 1", 1, "Categoria 1", 1),
-    Livro("Titulo 2", "Autor 2", 2, 2, "Editora 2", 2, "Categoria 2", 2),
-    Livro("Titulo 3", "Autor 3", 3, 3, "Editora 3", 3, "Categoria 3", 3),
-]        
 
-#zona de testes
-#Livro.incluirNovoLivro(livroDeLivros)
-#Livro.excluirLivro(livroDeLivros)
+        for item in listaLivros:
+            if item.get_titulo().lower() == livro.lower():
+                listaLivros.pop(contador)
+                print("Sucesso")
+                print(contador)
+                return True
+            contador = contador + 1
 
+        print("Livro errado")
+        return False
+
+
+
+#SÃO 5 DA MANHÃ, NÃO ME JULGUE PELO OQ EU ESCREVER AQUI
+listaLivros = [
+    Livro("Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia"),
+    Livro("A Metamorfose", "Franz Kafka", "Isso é um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 3, 420420420420, 1915, "Ficção"),
+    Livro("Biblia", "Deus", "To sem ideia de livro e esse é o mais famoso que eu lembrei", "Heaven", 0, 0000000000, 0, "Drama"),
+    Livro("Teste", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia"),
+    Livro("Teste2", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia")
+]

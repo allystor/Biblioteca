@@ -1,36 +1,57 @@
-from categoria import Categoria
-from livro import Livro
-from exemplares import Exemplar
+from ast import AugStore
+from livro import *
+from exemplar import *
+from categoria import *
 
-class Acervo:
+class Acervo():
 
-    def __init__(self, id, titulo, autor, assunto, editora, edicao, isbn, ano):
-        super().__init__(id, titulo, autor, assunto, editora, edicao, isbn, ano)
-        self.__
+    def __init__(self):
+        self.listaCategorias = []
+        self.listaLivros = []
+        self.listaExemplares = []
+
+    def consultarTudo(listaCategorias, listaLivros, listaExemplares):
+        try:
+            for categoria in listaCategorias:
+                print(categoria.get_nome())
+                for livro in listaLivros:
+                    if livro.get_categoria() == categoria.get_nome():
+                        print(livro.get_titulo())
+                        for exemplar in listaExemplares:
+                            if exemplar.get_livro() == livro:
+                                print(exemplar.get_numero())
+        except:
+            return False
+    def consultarTitulo(listaLivros, titulo):
+        try:
+            lista = []
+            for livro in listaLivros:
+                if livro.get_titulo() == titulo:
+                    lista.append(livro)
+            return lista
+        except:
+            return False
+
+    def consultarAutor(listaLivros, autor):
+
+        lista = []
+
+        for livro in listaLivros:
+            if livro.get_autor().lower() == autor.lower():
+                lista.append(livro)
+
+        return lista
+
+    def consultarAssunto(listaLivros, assunto):
+
+        lista = []
+
+        for livro in listaLivros:
+            if livro.get_assunto().lower() == assunto.lower():
+                lista.append(livro)
+
+        return lista
+
+    
         
-    def get_listaLivros(self):
-        return self.__listaLivros
-    
-    def get_listaExemplares(self):
-        return self.__listaExemplares
-    
-    def get_listaCategorias(self):
-        return self.__listaCategorias
-    
-    def set_listaLivros(self, listaLivros):
-        self.__listaLivros = listaLivros
-    
-    def set_listaExemplares(self, listaExemplares):
-        self.__listaExemplares = listaExemplares
-    
-    def set_listaCategorias(self, listaCategorias):
-        self.__listaCategorias = listaCategorias
-    
-    def listarLivros(self):
-        if self.get_listaLivros() == []:
-            print("Não há livros cadastrados")
-        else:
-            print("Livros cadastrados:")
-            for livro in self.get_listaLivros():
-                print(f"Titulo: {livro.get_titulo()}\n Autor: {livro.get_autor()}\n Assunto: {livro.get_assunto()}\n Editora: {livro.get_editora()}\n Edição: {livro.get_edicao()}\n ISBN: {livro.get_isbn()}\n Ano de publicação:{livro.get_ano()}")
-        
+Acervo.consultarTudo(listaCategorias, listaLivros, listaExemplares)
