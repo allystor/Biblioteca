@@ -5,32 +5,36 @@ from categoria import *
 
 class Acervo():
 
-    def __init__(self):
-        self.listaCategorias = []
-        self.listaLivros = []
-        self.listaExemplares = []
+    def __init__(self) -> None:
+        pass
 
     def consultarTudo(listaCategorias, listaLivros, listaExemplares):
-        try:
-            for categoria in listaCategorias:
-                print(categoria.get_nome())
-                for livro in listaLivros:
-                    if livro.get_categoria() == categoria.get_nome():
-                        print(livro.get_titulo())
-                        for exemplar in listaExemplares:
-                            if exemplar.get_livro() == livro:
-                                print(exemplar.get_numero())
-        except:
-            return False
-    def consultarTitulo(listaLivros, titulo):
-        try:
-            lista = []
+        for categoria in listaCategorias:
+            print(f"{categoria.get_nome()}---------------------")
             for livro in listaLivros:
-                if livro.get_titulo() == titulo:
-                    lista.append(livro)
-            return lista
-        except:
-            return False
+                if livro.get_categoria() == categoria.get_nome():
+                    print("   ↳  ", end='')
+                    print(livro.get_titulo())
+                    for exemplar in listaExemplares:
+                        if exemplar.get_livro() == livro.get_titulo():
+                            print("           ↳  ", end='')
+                            if exemplar.get_status() == True:
+                                print(f"{exemplar.get_id()}  ✔")
+                            else:
+                                print(f"{exemplar.get_id()}  ✖")
+                    print("")
+            
+            print("")
+
+    def consultarTitulo(listaLivros, titulo):
+
+        lista = []
+
+        for livro in listaLivros:
+            if livro.get_titulo().lower() == titulo.lower():
+                lista.append(livro)
+
+        return lista
 
     def consultarAutor(listaLivros, autor):
 

@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+from operator import contains
+>>>>>>> Stashed changes
 from categoria import Categoria, listaCategorias
 
 class Livro:
@@ -65,7 +69,11 @@ class Livro:
 
     #================================================================
 
+<<<<<<< Updated upstream
+    def incluirLivro(titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+=======
     def incluirLivro(listaLivros, listaCategorias,  titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+>>>>>>> Stashed changes
         
         for categoriaValida in listaCategorias:
             if categoria == categoriaValida.get_nome():
@@ -77,6 +85,14 @@ class Livro:
             
         return False
 
+<<<<<<< Updated upstream
+    def alterarLivro(alteracao, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
+            
+            try:
+                for livro in listaLivros:
+                    if alteracao == livro.get_titulo():
+                        alteracao = livro
+=======
     def alterarLivro(listaLivros, listaCategorias, alteracao, titulo, autor, assunto, editora, edicao, isbn, ano, categoria):
             
             try:
@@ -86,6 +102,7 @@ class Livro:
                     if alteracao.lower() == livro.get_titulo().lower():
                         alteracao = livro
             
+>>>>>>> Stashed changes
 
                 alteracao.set_titulo(titulo)
                 alteracao.set_autor(autor)
@@ -94,6 +111,15 @@ class Livro:
                 alteracao.set_edicao(edicao)
                 alteracao.set_isbn(isbn)
                 alteracao.set_ano(ano)
+<<<<<<< Updated upstream
+                alteracao.set_categoria(categoria)
+        
+                return True
+            except:
+                return False
+
+    def consultarLivro(titulo):
+=======
 
                 for categoriaTeste in listaCategorias:
                     if categoria.lower() == categoriaTeste.get_nome().lower():
@@ -110,6 +136,7 @@ class Livro:
 
 
     def consultarLivro(listaLivros, titulo):
+>>>>>>> Stashed changes
 
         for livro in listaLivros:
             if titulo.lower() == livro.get_titulo().lower():
@@ -118,6 +145,70 @@ class Livro:
 
         return False, None, None, None, None, None, None, None, None,
 
+<<<<<<< Updated upstream
+
+#SÃO 5 DA MANHÃ, NÃO ME JULGUE PELO OQ EU ESCREVER AQUI
+listaLivros = [
+    Livro("Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia"),
+    Livro("A Metamorfose", "Franz Kafka", "Isso é um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 3, 420420420420, 1915, "Ficção"),
+    Livro("Biblia", "Deus", "To sem ideia de livro e esse é o mais famoso que eu lembrei", "Heaven", 0, 0000000000, 0, "Drama")
+]
+
+Livro.consultarLivro("pipo o sapo")
+
+#ACHO Q NÃO É O Q EU QUERO, MAS É O Q EU QUERO
+class Exemplar(Livro):
+
+    def __init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria, disponivel):
+
+        Livro.__init__(self, titulo, autor, assunto, editora, edicao, isbn, ano, categoria)
+        self.__disponivel = disponivel
+
+    def get_disponivel(self):
+        return self.__disponivel
+
+    def set_disponivel(self, disponivel):
+        self.__disponivel = disponivel
+
+    def consultarExemplar(titulo):
+        try:
+            for exemplar in listaLivros:
+                if titulo.lower() == exemplar.get_titulo():
+                    return True, exemplar.get_titulo(), exemplar.get_autor(), exemplar.get_assunto(), exemplar.get_editora(), exemplar.get_edicao(), exemplar.get_isbn(), exemplar.get_ano(), exemplar.get_categoria(), exemplar.get_disponivel()
+        except:    
+            return False, None, None, None, None, None, None, None, None, None, None
+            
+    def alterarExemplar(titulo,disponivel):
+        try:
+            exemplar = Livro.consultarLivro(titulo)
+            for exemplar in listaLivros:
+                if exemplar.get_titulo() == titulo:
+                    listaLivros[contador].set_disponivel(disponivel)
+                    return True
+                contador += 1
+        except:
+            return False
+    
+    def incluirExemplar(exemplar):
+        try:
+            for incluir in listaLivros:
+                if exemplar == incluir.get_titulo():
+                        listaLivros.append(exemplar)        
+                        return True
+        except:
+            return False
+        
+    def excluirExemplar(exemplar):
+        try:
+            for remover in listaLivros:
+                if exemplar == remover.get_titulo():
+                    listaLivros.remove(remover)
+                    return True
+        except:
+            return False
+    
+    
+=======
     def excluirLivro(listaLivros, listaExemplares, livro):
 
         for exemplar in listaExemplares:
@@ -148,3 +239,4 @@ listaLivros = [
     Livro("Teste", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia"),
     Livro("Teste2", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia")
 ]
+>>>>>>> Stashed changes
