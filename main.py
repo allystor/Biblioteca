@@ -595,8 +595,6 @@ try:
 
                         if escolha == 2:
 
-                            
-                            
                             cls()
 
                             print("Alterando categoria...")
@@ -745,7 +743,7 @@ try:
                         for usuario in listaEmprestimos:
                             if usuario.get_usuario() == usuario:
                                 Emprestimo.efetuarDevolucao(usuario)
-                                print("Enviamos um aviso para o usuário que solicitou a devolução!")
+                            print("Enviamos um aviso para o usuário que solicitou a devolução!")
                             input("Aperte enter para continuar... ")      
                     
                     if escolha == 3:
