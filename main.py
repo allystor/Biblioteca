@@ -4,6 +4,7 @@ from usuario import *
 from livro import *
 from exemplar import *
 from acervo import *
+from relatorio import *
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -68,7 +69,8 @@ try:
                 print(f"   {usuario.get_nome()}           {usuario.get_tipo().capitalize()} ")
                 print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
                 print("| 1) Consultar Acervo              |")
-                print("| 2) Sair                          |")
+                print("| 2) realizar empréstimo de livro  |")
+                print("| 3) Sair                          |")
                 print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
                 #Esse inutil só pode ver acervo, mas eu n implementei esse lixo ainda
@@ -199,9 +201,68 @@ try:
 
                 
                 if escolha == 2:
-                    break
+                    while True:
 
-                    cls()
+                        cls()
+
+                        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                        print(f"   {usuario.get_nome()}           {usuario.get_tipo().capitalize()} ")
+                        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                        print("|         EMPRÉSTIMO               |")
+                        print("|                                  |")
+                        print("| 1) Consultar por titulo          |")
+                        print("| 2) Voltar                        |")
+                        print("|                                  |")
+                        print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                        
+                        escolha = int(input("Escolha uma opção: "))
+                        
+                        if escolha == 1:
+                            cls()
+
+                            print("Consultando por titulo...")
+
+                            titulo = input("Informe o titulo que deseja buscar: ")
+
+                            testa = Acervo.consultarTitulo(listaLivros, titulo)
+
+                            if len(testa) > 0:
+
+                                cls()
+
+                                print("Livros encontrados:")
+                                print("")
+
+                                for item in testa:
+                                    
+                                    print(item.get_titulo())
+                                    
+                                print("")
+                                escolha = int(input("Deseja adiquirir livro emprestado? (1) Sim (2) Não: "))
+                                
+                                if escolha == 1:
+                                    usuario = str(input("Informe o nome do seu usuário: "))
+                                    livro = str(input("Informe o titulo do livro: "))
+                                    data = (input("Informe a data de empréstimo (dd/mm/aaaa): "))
+                                    devolucao = input("Informe a data de devolução (dd/mm/aaaa): ")
+                                
+                                    Emprestimo.criarEmprestimo(usuario, livro, data, devolucao)
+                                    
+                                    print("Empréstimo realizado com sucesso!")
+                                    input("Aperte enter para continuar... ")
+                                
+                                if escolha == 2:
+                                    break
+                            
+                            else:
+                                cls()
+
+                                print("Nenhum livro encontrado...")
+                                input("Aperte enter para continuar... ")
+                                
+                        if escolha == 2:
+                            break
+                        
         if usuario.get_tipo() == "bibliotecario":
             
                 #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MENU B ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -586,7 +647,6 @@ try:
                         
                         if escolha == 4:
 
-                            #NÃO FIZ AINDA, PRECISO DA LISTA DE LIVROS PRIMEIRO
 
                             cls()
 
@@ -627,9 +687,11 @@ try:
                     break
 
                 #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+                
+        # ISSO AQUI TA UMA MERDA MAS A GENTE TA SEM TEMPO
         if usuario.get_tipo() == "gerente":
             
-            #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MENU B ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+            #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MENU C ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
             
             cls()
             
@@ -638,7 +700,51 @@ try:
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
             print("|1)Gerar relatórios               |")
             print("|2)Consultar empréstimos          |")
-            print("|3)Consultar reservas                |")
+            print("|3)Consultar reservas             |")
+            print("|4)Sair                           |")
+            print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+            
+            escolha = int(input("Informe a opção desejada: "))
+
+            if escolha == 1:
+                pass
+            
+            if escolha == 2:
+                while True:
+                    cls()
+                    
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("        EMPRÉSTIMOS              ")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    print("|1)Consultar empréstimos        |")
+                    print("|2)Solicitar devolução          |")
+                    print("|3)Sair                         |")
+                    print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
+                    
+                    escolha = int(input("Informe a opção desejada: "))
+                    
+                    if escolha == 1:
+                    
+                        cls()
+                        
+                        print("Estes são os empréstimos atuais: ")
+                        Emprestimo.listarEmprestimos(listaEmprestimos)
+                        for emprestimo in listaEmprestimos:
+                            print(f"Usuário: {emprestimo.get_usuario()}\nLivro: {emprestimo.get_livro()}\nData de empréstimo: {emprestimo.get_data_emprestimo()}\nPrevisão de devolução: {emprestimo.get_data_devolucao()}")
+                            print("")
+                        input("Aperte enter para voltar... ")
+                    
+                    if escolha == 2:
+                        usuario = input("Informe o usuário que deseja solicitar a devolução: ")
+                        
+                        if usuario in listaEmprestimos:
+                            Emprestimo.efetuarDevolucao(usuario)
+                            
+                            print("Enviamos um aviso para o usuário que solicitou a devolução!")
+                            input("Aperte enter para continuar... ")      
+                    
+                    if escolha == 3:
+                        break
 except:
     print("Algo deu errado...")
     input("Aperte enter para continuar... ")
