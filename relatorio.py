@@ -42,6 +42,28 @@ class Emprestimo:
     def set_data_devolucao(self, data_devolucao):
         self.__data_devolucao = data_devolucao
         
+    def criarEmprestimo(usuario,livro,data_emprestimo,data_devolucao):
+        try:
+            for usuario in listaUsuarios:
+                if (usuario == usuario.get_login()):
+                    for livro in listaLivros:
+                        if (livro == livro.get_titulo()):
+                            listaEmprestimos.append(Emprestimo(usuario,livro,data_emprestimo,data_devolucao))
+                            return True, Emprestimo
+                        elif (livro != livro.get_titulo()):
+                            return False, None
+        except:
+            return False, None
+        
+    def listarEmprestimos():
+        try:
+            for emprestimo in listaEmprestimos:
+                print("Usuario: ", emprestimo.get_usuario())
+                print("Livro: ", emprestimo.get_livro())
+                print("Data de emprestimo: ", emprestimo.get_data_emprestimo())
+                print("Data de devolucao: ", emprestimo.get_data_devolucao())
+        except:
+            return None
     
     def consultarEmprestimo(usuario, livro):
         try:
