@@ -13,13 +13,21 @@ class Acervo():
     def consultarTudo(listaCategorias, listaLivros, listaExemplares):
         try:
             for categoria in listaCategorias:
-                print(categoria.get_nome())
+                print(f"{categoria.get_nome()}---------------------")
                 for livro in listaLivros:
                     if livro.get_categoria() == categoria.get_nome():
+                        print("   ↳  ", end='')
                         print(livro.get_titulo())
                         for exemplar in listaExemplares:
-                            if exemplar.get_livro() == livro:
-                                print(exemplar.get_numero())
+                            if exemplar.get_livro() == livro.get_titulo():
+                                print("           ↳  ", end='')
+                                if exemplar.get_status() == True:
+                                    print(f"{exemplar.get_id()}  ✔")
+                                else:
+                                    print(f"{exemplar.get_id()}  ✖")
+                        print("")
+
+                print("")
         except:
             return False
     def consultarTitulo(listaLivros, titulo):

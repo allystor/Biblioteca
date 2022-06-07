@@ -250,6 +250,7 @@ try:
                                     
                                     print("Empréstimo realizado com sucesso!")
                                     input("Aperte enter para continuar... ")
+                                    break
                                 
                                 if escolha == 2:
                                     break
@@ -594,8 +595,7 @@ try:
 
                         if escolha == 2:
 
-                            #ISSO AQUI PODE FICAR MUITO MELHOR!!!!!
-                            #ATUALMENTE NÃO DA PRA ESCOLHER 1 COISA, TEM QUE MUDAR TUDO
+                            
                             
                             cls()
 
@@ -689,7 +689,7 @@ try:
                 #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
                 
         # ISSO AQUI TA UMA MERDA MAS A GENTE TA SEM TEMPO
-        if usuario.get_tipo() == "gerente":
+        if usuario.get_tipo() == "funcionario":
             
             #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MENU C ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
             
@@ -698,16 +698,22 @@ try:
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
             print(f"   {usuario.get_nome()}     {usuario.get_tipo().capitalize()}")
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("|1)Gerar relatórios               |")
+            print("|1)Consultar usuários              |")
             print("|2)Consultar empréstimos          |")
-            print("|3)Consultar reservas             |")
-            print("|4)Sair                           |")
+            print("|3)Sair                           |")
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
             
             escolha = int(input("Informe a opção desejada: "))
 
             if escolha == 1:
-                pass
+                cls()
+
+                print("Usuários disponíveis: ")
+                for usuario in listaEmprestimos:
+                    print(f"Nome: {usuario.get_usuario()}")
+                input("Aperte enter para continuar... ")
+
+
             
             if escolha == 2:
                 while True:
@@ -724,7 +730,7 @@ try:
                     escolha = int(input("Informe a opção desejada: "))
                     
                     if escolha == 1:
-                    
+                
                         cls()
                         
                         print("Estes são os empréstimos atuais: ")
@@ -733,14 +739,13 @@ try:
                             print(f"Usuário: {emprestimo.get_usuario()}\nLivro: {emprestimo.get_livro()}\nData de empréstimo: {emprestimo.get_data_emprestimo()}\nPrevisão de devolução: {emprestimo.get_data_devolucao()}")
                             print("")
                         input("Aperte enter para voltar... ")
-                    
                     if escolha == 2:
                         usuario = input("Informe o usuário que deseja solicitar a devolução: ")
                         
-                        if usuario in listaEmprestimos:
-                            Emprestimo.efetuarDevolucao(usuario)
-                            
-                            print("Enviamos um aviso para o usuário que solicitou a devolução!")
+                        for usuario in listaEmprestimos:
+                            if usuario.get_usuario() == usuario:
+                                Emprestimo.efetuarDevolucao(usuario)
+                                print("Enviamos um aviso para o usuário que solicitou a devolução!")
                             input("Aperte enter para continuar... ")      
                     
                     if escolha == 3:

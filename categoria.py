@@ -31,7 +31,7 @@ class Categoria:
 
     #=================================================#
 
-    def incluirCategoria(nome, descricao, assunto):
+    def incluirCategoria(listaCategoria, nome, descricao, assunto):
 
         try:
 
@@ -42,7 +42,7 @@ class Categoria:
 
             return False
         
-    def alterarCategoria(alteracao, nome, descricao, assunto):
+    def alterarCategoria(listaCategoria, alteracao, nome, descricao, assunto):
 
         try:
 
@@ -60,7 +60,7 @@ class Categoria:
 
             return False
 
-    def consultarCategoria(consulta):
+    def consultarCategoria(listaCategoria, consulta):
         try:
             for categoria in listaCategorias:
                 if consulta.lower() == categoria.get_nome().lower():
