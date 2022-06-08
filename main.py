@@ -249,6 +249,7 @@ try:
                                     
                                     print("Empréstimo realizado com sucesso!")
                                     input("Aperte enter para continuar... ")
+                                    break
                                 
                                 if escolha == 2:
                                     break
@@ -725,7 +726,7 @@ try:
                     escolha = int(input("Informe a opção desejada: "))
                     
                     if escolha == 1:
-                    
+                
                         cls()
                         
                         print("Estes são os empréstimos atuais: ")
@@ -734,7 +735,6 @@ try:
                             print(f"Usuário: {emprestimo.get_usuario()}\nLivro: {emprestimo.get_livro()}\nData de empréstimo: {emprestimo.get_data_emprestimo()}\nPrevisão de devolução: {emprestimo.get_data_devolucao()}")
                             print("")
                         input("Aperte enter para voltar... ")
-                    
                     if escolha == 2:
                         usuario = input("Informe o usuário que deseja solicitar a devolução: ")
                         for emprestimo in listaEmprestimos:
