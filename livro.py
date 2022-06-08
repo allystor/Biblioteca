@@ -139,12 +139,8 @@ class Livro:
         return False
 
 
-
-#SÃO 5 DA MANHÃ, NÃO ME JULGUE PELO OQ EU ESCREVER AQUI
 listaLivros = [
-    Livro("Pipo o sapo", "Meu Tio", "Um sapo chamado pipo", "Jardim", 1, 696969696969, 2076, "Biografia"),
     Livro("A Metamorfose", "Franz Kafka", "Isso é um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 3, 420420420420, 1915, "Ficção"),
-    Livro("Biblia", "Deus", "To sem ideia de livro e esse é o mais famoso que eu lembrei", "Heaven", 0, 0000000000, 0, "Drama"),
-    Livro("Teste", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia"),
-    Livro("Teste2", "Teste", "Teste", "Tesete", 1, 1, 1, "Biografia")
+    Livro("O Senhor dos Anéis", "J. R. R. Tolkien", "Um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 1, 99999999999, 1954, "Ficção"),
+    Livro("Harry Potter e a Pedra Filosofal", "J. K. Rowling", " A série narra as aventuras de um jovem chamado Harry James Potter, que descobre aos 11 anos de idade que é um bruxo ao ser convidado para estudar na Escola de Magia e Bruxaria de Hogwarts.", "Editora alemã aleatória", 1, 99999999999, 1997, "Ficção"),
 ]

@@ -5,8 +5,7 @@ class Usuario():
         self.__login = login
         self.__senha = senha
 
-        # NA MEDIDA DO NECESSÁRIO, COLOCA MAIS TIPOS AQUI, "GERENTE", OU QUALQUER MERDA ASSIM
-        if tipo.lower() == "usuario" or tipo.lower() == "bibliotecario" or tipo.lower() == "gerente":
+        if tipo.lower() == "usuario" or tipo.lower() == "bibliotecario" or tipo.lower() == "gerente" or tipo.lower() == "funcionario":
             self.__tipo = tipo
         else:
             self.__tipo = None
@@ -37,5 +36,6 @@ class Usuario():
 listaUsuarios = [
     Usuario("Luiz", "leitor", "leitor", "usuario"),
     Usuario("Renata", "admin", "admin", "bibliotecario"),
-    Usuario("Geraldo", "gerente", "gerente", "gerente")
+    Usuario("Geraldo", "gerente", "gerente", "gerente"),
+    Usuario("Fulano", "funcionario", "funcionario", "funcionario")
 ]

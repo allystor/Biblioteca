@@ -31,7 +31,7 @@ class Categoria:
 
     #=================================================#
 
-    def incluirCategoria(nome, descricao, assunto):
+    def incluirCategoria(listaCategorias ,nome, descricao, assunto):
 
         try:
 
@@ -42,7 +42,7 @@ class Categoria:
 
             return False
         
-    def alterarCategoria(alteracao, nome, descricao, assunto):
+    def alterarCategoria(listasCategorias,alteracao, nome, descricao, assunto):
 
         try:
 
@@ -60,7 +60,7 @@ class Categoria:
 
             return False
 
-    def consultarCategoria(consulta):
+    def consultarCategoria(listaCategoria, consulta):
         try:
             for categoria in listaCategorias:
                 if consulta.lower() == categoria.get_nome().lower():
@@ -68,7 +68,7 @@ class Categoria:
         except:
             return False, None, None, None
 
-    def excluirCategoria(remover):
+    def excluirCategoria(listaCategoria, remover):
         try:
             for categoria in listaCategorias:
                 if remover == categoria.get_nome():
@@ -83,5 +83,7 @@ class Categoria:
 listaCategorias = [
     Categoria("Biografia", "Gênero no qual o autor narra sobre a vida de uma pessoa ou de várias pessoas.", None),
     Categoria("Ficção", "Narrativa imaginária, irreal, que se opõe à Não-Ficção. Ainda que possa ser baseada em fatos reais, contará sempre com elementos de conteúdo imaginário.", None),
-    Categoria("Drama", "Obras que trazem conteúdos, centrais ou não, caracterizados por sofrimentos e/ou tragédias, todavia, podem ou não terem um desfecho triste.", None)
+    Categoria("Drama", "Obras que trazem conteúdos, centrais ou não, caracterizados por sofrimentos e/ou tragédias, todavia, podem ou não terem um desfecho triste.", None),
+    Categoria("Romance", "Narrativas de amor, que se opõem às Não-Ficção, mas também podem ser baseadas em fatos reais.", None),
+    
 ]

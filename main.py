@@ -5,6 +5,7 @@ from livro import *
 from exemplar import *
 from acervo import *
 from relatorio import *
+from datetime import datetime
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -654,12 +655,12 @@ try:
                         
                             categoria = input("Informe a categoria que deseja excluir: ")
                             
-                            teste = Categoria.excluirCategoria(listaCategorias, listaLivros, categoria)
+                            teste = Categoria.excluirCategoria(listaCategorias, categoria)
                             
                             if teste:
                                 cls()
 
-                                print(f"Categoria : {categoria} Excluido con sucesso!")
+                                print(f"Categoria : {categoria} Excluido com sucesso!")
                                 input("Aperte enter para continuar... ")
 
                             else: 
@@ -689,7 +690,7 @@ try:
                 #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
                 
         # ISSO AQUI TA UMA MERDA MAS A GENTE TA SEM TEMPO
-        if usuario.get_tipo() == "gerente":
+        if usuario.get_tipo() == "funcionario":
             
             #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MENU C ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
             
@@ -698,17 +699,22 @@ try:
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
             print(f"   {usuario.get_nome()}     {usuario.get_tipo().capitalize()}")
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
-            print("|1)Gerar relatórios               |")
-            print("|2)Consultar empréstimos          |")
-            print("|3)Consultar reservas             |")
-            print("|4)Sair                           |")
+            print("|1)Consultar usuário             |")
+            print("|2)Consultar empréstimos         |")
+            print("|3)Sair                          |")
             print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
             
             escolha = int(input("Informe a opção desejada: "))
 
             if escolha == 1:
-                pass
-            
+                cls()
+                
+                print("Estes são os usuários cadastrados no sistema: ")
+                print("")
+                for usuario in listaEmprestimos:
+                    print(f"Nome: {usuario.get_usuario()}")
+                input("Aperte enter para continuar... ")    
+                                
             if escolha == 2:
                 while True:
                     cls()
@@ -736,15 +742,20 @@ try:
                     
                     if escolha == 2:
                         usuario = input("Informe o usuário que deseja solicitar a devolução: ")
-                        
-                        if usuario in listaEmprestimos:
-                            Emprestimo.efetuarDevolucao(usuario)
-                            
+                        for emprestimo in listaEmprestimos:
+                            if emprestimo.get_usuario() == usuario:
+                                emprestimo.set_data_devolucao(datetime.now())
+                                print("Devolução solicitada com sucesso!")
+                                input("Aperte enter para continuar... ")
+                                break
+                                
                             print("Enviamos um aviso para o usuário que solicitou a devolução!")
                             input("Aperte enter para continuar... ")      
                     
                     if escolha == 3:
                         break
+                    
+                    
 except:
     print("Algo deu errado...")
     input("Aperte enter para continuar... ")
