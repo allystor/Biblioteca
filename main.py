@@ -74,8 +74,6 @@ try:
                 print("| 3) Sair                          |")
                 print("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■")
 
-                #Esse inutil só pode ver acervo, mas eu n implementei esse lixo ainda
-
                 escolha = int(input("Escolha uma opção: "))
 
                 if escolha == 1:
@@ -434,7 +432,7 @@ try:
 
 
 
-                    #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+                    #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
                     #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ EXEMPLAR ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
@@ -545,7 +543,7 @@ try:
                             escolha = None
                             break
 
-
+                    #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
                 if escolha == 3:
 
 
@@ -594,9 +592,6 @@ try:
 
 
                         if escolha == 2:
-
-                            #ISSO AQUI PODE FICAR MUITO MELHOR!!!!!
-                            #ATUALMENTE NÃO DA PRA ESCOLHER 1 COISA, TEM QUE MUDAR TUDO
                             
                             cls()
 
@@ -682,14 +677,14 @@ try:
                                     
                     Acervo.consultarTudo(listaCategorias, listaLivros, listaExemplares)
 
-                    input()
+                    print("")
+                    
 
                 if escolha == 5:
                     break
 
                 #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
                 
-        # ISSO AQUI TA UMA MERDA MAS A GENTE TA SEM TEMPO
         if usuario.get_tipo() == "funcionario":
             
             #■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ MENU C ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■

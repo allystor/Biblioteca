@@ -141,6 +141,6 @@ class Livro:
 
 listaLivros = [
     Livro("A Metamorfose", "Franz Kafka", "Isso é um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 3, 420420420420, 1915, "Ficção"),
-    Livro("O Senhor dos Anéis", "J. R. R. Tolkien", "Um livro de vdd de um cara que vira inseto ou alguma coisa assim", "Editora alemã aleatória", 1, 99999999999, 1954, "Ficção"),
+    Livro("O Senhor dos Anéis", "J. R. R. Tolkien", " história narra o conflito contra o mal que se alastra pela Terra-média, através da luta de várias raças - Humanos, Anãos, Elfos, Ents e Hobbits - contra Orques, para evitar que o Anel do Poder volte às mãos de seu criador Sauron, o Senhor Sombrio.", "Editora alemã aleatória", 1, 99999999999, 1954, "Ficção"),
     Livro("Harry Potter e a Pedra Filosofal", "J. K. Rowling", " A série narra as aventuras de um jovem chamado Harry James Potter, que descobre aos 11 anos de idade que é um bruxo ao ser convidado para estudar na Escola de Magia e Bruxaria de Hogwarts.", "Editora alemã aleatória", 1, 99999999999, 1997, "Ficção"),
 ]
