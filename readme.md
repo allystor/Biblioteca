@@ -1,3 +1,3 @@
-Álvaro João da Silva Veiga - 202110596
+# Projeto biblioteca
 
-Luiz Henrique Vachod Miki - 202110159
+Este projeto consiste em um trabalho acadêmico com o propósito de atender as requisições listadas na documentação no repositório.
